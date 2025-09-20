@@ -38,7 +38,7 @@ nav li, nav a, nav ul{
 article, aside{
     width: 50%;
     height: 30%;
-    display: inline-flex;
+    display: inline-flexbox;
 }
 
 p{
