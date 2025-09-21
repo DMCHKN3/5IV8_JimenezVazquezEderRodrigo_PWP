@@ -1,0 +1,9 @@
+html, body{
+    background: linear-gradient(135deg, #d13838 0%, salmon 100%);
+}
+
+*{
+    color: black;
+    text-align: center;
+    font-family: sans-serif;
+}
