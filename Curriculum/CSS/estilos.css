@@ -1,18 +1,18 @@
 html, body{
-    background-color: rgb(15, 15, 15);
+    background-color: whitesmoke;
 }
 
 *{
     padding: 0;
     margin: 0;
-    color: whitesmoke;
+    color: black;
     text-align: center;
     font-family: sans-serif;
 }
 
 .container-main{
-    background-color: rgb(130, 130, 130);
-    border: 3px solid;
+    background-color: rgb(104, 238, 248);
+    border: 5px solid rgb(52, 137, 176);
     border-radius: 25px;
     padding: 5px;
     margin: 1rem;
@@ -26,9 +26,15 @@ nav li, nav a, nav ul{
     font-size: 20px;
 }
 
+li{
+    list-style-type: none;
+    text-decoration: none;
+    text-align: justify;
+}
+
  section, footer, aside, article{
-    background-color: rgb(130, 130, 130);
-    border: 4px solid whitesmoke;
+    background-color: rgb(104, 238, 248);
+    border: 4px solid rgb(52, 137, 176);
     margin: 1rem;
     border-radius: 10px;
     padding: 1rem;
@@ -43,13 +49,14 @@ article, aside{
 
 p{
     text-align: left;
+    font-size: 1rem;
 }
 
 .container-section{
     text-align: justify;
 }
 
-footer{
+.container-footer{
     text-align: center;
     text-decoration: solid;
 }
