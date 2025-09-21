@@ -1,5 +1,5 @@
 html, body{
-    background-color: whitesmoke;
+    background: linear-gradient(135deg, #adfec7 0%, rgb(114, 250, 232) 100%);
 }
 
 *{
@@ -18,7 +18,7 @@ html, body{
     margin: 1rem;
 }
 
-nav li, nav a, nav ul{
+ nav a, nav ul{
     list-style-type: none;
     display: inline-flex;
     text-decoration: none;
@@ -38,13 +38,11 @@ li{
     margin: 1rem;
     border-radius: 10px;
     padding: 1rem;
-    text-align: justify;
 }
 
 article, aside{
     width: 50%;
-    height: 30%;
-    display: inline-flexbox;
+    height: 40%;
 }
 
 p{
@@ -53,7 +51,10 @@ p{
 }
 
 .container-section{
+    display: flexbox;
+    gap: 1rem;
     text-align: justify;
+    justify-items: center;
 }
 
 .container-footer{
