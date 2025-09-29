@@ -38,6 +38,7 @@ a:hover{
 .container-table{
     align-items: center;
     padding: 10px;
+    width: 35%;
 }
 
 th, td {
