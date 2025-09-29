@@ -1,5 +1,5 @@
 html, body{
-    background: linear-gradient(135deg, #38D1A1 0%, #38D13A 100%);
+    background-color: #E14B72;
 }
 
 *{
@@ -13,31 +13,33 @@ a{
 }
 
 a:hover{
-    color: #D13E38;
+    color: #B5163B;
     font-weight: bold;
 }
 
 .container-header{
     align-items: center;
-    background-color: #D13E38;
+    background-color: #B5163B;
     color: white;
     font-size: 25px;
     font-weight: bold;
     padding: 10px;
     border-radius: 10px;
+    border: 2px solid black;
 }
 
 .container-texto{
-    background-color: #D13E38;
+    background-color: #B5163B;
     color: white;
     font-size: 20px;
     padding: 25px;
     border-radius: 15px;
+    border: 2px solid black;
 }
 
 .container-table{
     align-items: center;
-    background-color: white;
+    background-color: #F2A5C0;
     border-color: black;
     border-style: solid;
     border-width: 2px;
@@ -47,4 +49,9 @@ a:hover{
 
 table{
     margin: auto;
+}
+
+hr{
+    border: 2px solid #F2A5C0;
+    border-radius: 5px;
 }
