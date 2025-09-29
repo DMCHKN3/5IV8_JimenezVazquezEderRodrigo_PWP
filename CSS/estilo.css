@@ -7,3 +7,17 @@ html, body{
     text-align: center;
     font-family: sans-serif;
 }
+
+.container-table{
+    align-items: center;
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px;;
+}
+
+table{
+    margin: auto;
+}
