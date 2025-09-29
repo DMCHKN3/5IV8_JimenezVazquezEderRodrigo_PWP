@@ -8,6 +8,15 @@ html, body{
     font-family: sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #D13E38;
+    font-weight: bold;
+}
+
 .container-header{
     align-items: center;
     background-color: #D13E38;
