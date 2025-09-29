@@ -35,6 +35,37 @@ a:hover {
     gap: 2rem;
 }
 
+.container-imgs{
+    position: relative;
+    width: 480px;
+    height: 450px;
+}
+
+.img-base, .img-hover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.img-base{
+    height: 450px;
+}
+
+.img-hover{
+    opacity: 0;
+}
+
+.container-imgs:hover .img-base{
+    opacity: 0;
+}
+
+.container-imgs:hover .img-hover{
+    opacity: 1;
+}
+
 .container-texto {
     background-color: #F2A5C0;
     font-size: 20px;
