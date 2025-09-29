@@ -27,6 +27,13 @@ a:hover{
     border: 2px solid black;
 }
 
+.container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; /* Espacio entre imagen y tabla */
+}
+
 .container-texto{
     background-color: #F2A5C0;
     font-size: 20px;
@@ -35,7 +42,13 @@ a:hover{
     border: 2px solid black;
 }
 
+.container-img {
+    margin: 0;
+    height: 450px;
+}
+
 .container-table{
+    margin: 0 auto;
     align-items: center;
     padding: 10px;
     width: 35%;
