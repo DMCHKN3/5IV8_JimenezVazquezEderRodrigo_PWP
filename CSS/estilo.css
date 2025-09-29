@@ -1,11 +1,21 @@
 html, body{
-    background: linear-gradient(135deg, #d13838 0%, salmon 100%);
+    background: linear-gradient(135deg, #38D1A1 0%, #38D13A 100%);
 }
 
 *{
     color: black;
     text-align: center;
     font-family: sans-serif;
+}
+
+.container-header{
+    align-items: center;
+    background-color: #D13E38;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .container-table{
