@@ -18,7 +18,7 @@ function validar(formulario) {
     var checkStr = formulario.Nombre.value;
     alert(checkStr);
 
-    var abcOk = "QWERTYUIOPASDFGHJKLÑZXCVBNM" + "qwertyuiopasdfghjklñzxcvbnm";
+    var abcOk = "QWERTYUIOPASDFGHJKLÑZXCVBNM" + "qwertyuiopasdfghjklñzxcvbnm" + " ";
 
     var allValido = true;
 
@@ -47,7 +47,7 @@ function validar(formulario) {
     var checkStr = formulario.Edad.value;
     alert(checkStr);
 
-    var abcOk = "1234567890" + "qwertyuiopasdfghjklñzxcvbnm" + " ";
+    var numOk = "1234567890";
 
     var allValido = true;
 
@@ -55,19 +55,19 @@ function validar(formulario) {
 
     for (var i = 0; i < checkStr.length; i++) {
         var caracteres = checkStr.charAt(i);
-        for (var j = 0; j < abcOk.length; j++) {
-            if (caracteres == abcOk.charAt(j)) {
+        for (var j = 0; j < numOk.length; j++) {
+            if (caracteres == numOk.charAt(j)) {
                 break;
             }
         }
-        if (j == abcOk.length) {
+        if (j == numOk.length) {
             allValido = false;
             break;
         }
     }
 
     if(!allValido){
-        alert("Escribe unicamente digitos en el campo edad");
+        alert("Escribe unicamente digitos/enteros en el campo edad");
         formulario.Edad.focus();
         return false;
     }
@@ -79,7 +79,7 @@ function validar(formulario) {
 
     var txt = formulario.Correo.value;
 
-    alert("Email" + (b.test(txt)? " ": " no ") + "valido");
+    alert("Email" + (!b.test(txt)?" ": " no ") + "valido");
 
     return b.test;
 }
