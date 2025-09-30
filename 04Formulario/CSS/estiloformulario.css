@@ -37,3 +37,30 @@ a:hover {
     color: #B5163B;
     font-weight: bold;
 }
+
+.container-texto{
+    align-items: center;
+    text-align: justify;
+    margin: 0 15%;
+    background-color: #F2A5C0;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.container-form{
+    align-items: center;
+    text-align: center;
+    margin: 25px 25%;
+    background-color: #F2A5C0;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+form{
+    padding: 15px;
+    display: flex;    
+    flex-direction: column;;
+}
+
