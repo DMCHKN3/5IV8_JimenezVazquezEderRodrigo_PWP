@@ -1,0 +1,39 @@
+tml,
+body {
+    background-color: #E14B72;
+}
+
+* {
+    color: black;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+h1, header{
+    font-family: "Lexend", sans-serif;
+    font-size: 35px;
+}
+
+h2{
+    font-family: "Outfit", sans-serif;
+    font-size: 25px;
+}
+
+h3{
+    font-family: "Funnel Display", sans-serif;
+    font-size: 22px;
+}
+
+p, a, td, th, label{
+    font-family: "Zain", sans-serif;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #B5163B;
+    font-weight: bold;
+}
