@@ -50,10 +50,6 @@ a:hover {
     transition: opacity 0.5s ease-in-out;
 }
 
-.img-base{
-    height: 450px;
-}
-
 .img-hover{
     opacity: 0;
 }
