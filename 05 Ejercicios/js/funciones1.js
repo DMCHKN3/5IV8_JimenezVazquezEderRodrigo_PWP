@@ -8,10 +8,16 @@ function validarn(e) {
 
 //funcion para calcular el interes
 function calcular() {
+    var meses = document.getElementById("mesesi").value
+    if (meses > 18) {
+        alert("El maximo de meses es 18");
+    }
     var valor = document.getElementById("cantidadi").value
     var parseo = parseFloat(valor);
     alert(parseo);
-    var interes = parseo * (0.0805);//limite a 2 decimales
+    var nmeses = parseInt(meses);
+    alert(nmeses);
+    var interes = parseo * ((0.0805/12) * meses);//limite a 2 decimales
     interes = parseFloat(interes.toFixed(2));
     alert(interes);
     var total = interes + parseo;
