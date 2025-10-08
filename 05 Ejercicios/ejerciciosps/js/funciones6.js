@@ -14,6 +14,7 @@ function calcular(){
         return;
     }
     var edad = añoactal - añoac;
+    document.getElementById("edadf").value = edad + " años";
 }
 
 function borrar(){
