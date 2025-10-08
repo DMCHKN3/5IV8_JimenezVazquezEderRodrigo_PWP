@@ -12,8 +12,10 @@ function calcular() {
     var parseo = parseFloat(valor);
     alert(parseo);
     var interes = parseo * (0.0805);//limite a 2 decimales
+    interes = parseFloat(interes.toFixed(2));
     alert(interes);
     var total = interes + parseo;
+    total = parseFloat(total.toFixed(2));
     alert(total);
     document.getElementById("saldoi").value = "$ " + total;//limite a 2 decimales
 }
