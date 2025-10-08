@@ -8,15 +8,15 @@ function validara(e){
 
 function calcular(){
     var añoactal = new Date().getFullYear();
-    var añonac = document.getElementById("nacimiento").value;
-    if(añoac < 1900 || añonac > añoactal){
+    var añoac = document.getElementById("anacimiento").value;
+    if(añoac < 1900 || añoac > añoactal){
         alert("Año no valido");
         return;
     }
-    var edad = añoactal - añonac;
+    var edad = añoactal - añoac;
 }
 
 function borrar(){
-    document.getElementById("nacimiento").value = " ";
-    document.getElementById("edad").value = " ";
+    document.getElementById("anacimiento").value = " ";
+    document.getElementById("edadf").value = " ";
 }
