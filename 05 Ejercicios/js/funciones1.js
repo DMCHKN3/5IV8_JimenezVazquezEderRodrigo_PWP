@@ -17,7 +17,7 @@ function calcular() {
     alert(parseo);
     var nmeses = parseInt(meses);
     alert(nmeses);
-    var interes = parseo * ((0.0805/12) * meses);//limite a 2 decimales
+    var interes = parseo * ((0.0805/12) * nmeses);//limite a 2 decimales
     interes = parseFloat(interes.toFixed(2));
     alert(interes);
     var total = interes + parseo;
@@ -30,6 +30,7 @@ function calcular() {
 function borrar() {
     document.getElementById("saldoi").value = " ";
     document.getElementById("cantidadi").value = " ";
+    document.getElementById("mesesi").value = " ";
 }
 
 /*
