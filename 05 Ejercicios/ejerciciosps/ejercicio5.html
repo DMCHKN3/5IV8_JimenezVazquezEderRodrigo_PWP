@@ -20,27 +20,27 @@
                 <table class="table">
                     <tr>
                         <td>Ingrese la cantidad de hombres:</td>
-                        <td><input type="text" name="hombres" id="hombresc" onkeypress="return"></td>
+                        <td><input type="text" name="hombres" id="hombresc" onkeypress="return validarp(event)"></td>
                     </tr>
                     <tr>
                         <td>Ingrese la cantidad de mujeres:</td>
-                        <td><input type="text" name="mujeres" id="mujeresc" onkeypress="return"></td>
+                        <td><input type="text" name="mujeres" id="mujeresc" onkeypress="return validarp(event)"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="button" value="Calcular porcentajes" name="eviar" onclick=""></td>
+                        <td><input type="button" value="Calcular porcentajes" name="eviar" onclick="calcular()"></td>
                     </tr>
                     <tr>
                         <td>El porcentaje de hombres es:</td>
-                        <td><input type="text" name="porcentaje" id="porcentajeh" readonly="readonly"></td>
+                        <td><input type="text" name="porcentaje" id="porcentajeht" readonly="readonly"></td>
                     </tr>
                     <tr>
                         <td>El porcentaje de mujeres es:</td>
-                        <td><input type="text" name="porcentaje" id="porcentajem" readonly="readonly"></td>
+                        <td><input type="text" name="porcentaje" id="porcentajemt" readonly="readonly"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="button" value="Borrar Datos" name="Borrard" onclick=""></td>
+                        <td><input type="button" value="Borrar Datos" name="Borrard" onclick="borrar()"></td>
                     </tr>
                 </table>
             </div>
