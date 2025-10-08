@@ -10,7 +10,7 @@ function calcular(){
     var añoactal = new Date().getFullYear();
     var añoac = document.getElementById("anacimiento").value;
     if(añoac < 1900 || añoac > añoactal){
-        alert("Año no valido");
+        alert("Ingrese un año de entre 1900 y " + añoactal);
         return;
     }
     var edad = añoactal - añoac;
