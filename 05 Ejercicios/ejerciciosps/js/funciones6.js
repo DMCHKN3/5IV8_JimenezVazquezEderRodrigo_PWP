@@ -15,3 +15,8 @@ function calcular(){
     }
     var edad = añoactal - añonac;
 }
+
+function borrar(){
+    document.getElementById("nacimiento").value = " ";
+    document.getElementById("edad").value = " ";
+}
