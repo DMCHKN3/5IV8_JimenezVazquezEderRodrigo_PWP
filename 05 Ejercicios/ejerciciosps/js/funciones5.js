@@ -21,3 +21,10 @@ function calcular(){
     document.getElementById("porcentajeht").value = porcentajeh + " %";
     document.getElementById("porcentajemt").value = porcentajem + " %";
 }
+
+function borrar(){
+    document.getElementById("hombresc").value = " ";
+    document.getElementById("mujeresc").value = " ";
+    document.getElementById("porcentajeht").value = " ";
+    document.getElementById("porcentajemt").value = " ";
+}
