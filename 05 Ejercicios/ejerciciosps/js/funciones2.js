@@ -29,7 +29,9 @@ function calcular() {
 }
 
 function borrar() {
-    document.getElementById("saldoi").value = " ";
-    document.getElementById("cantidadi").value = " ";
-    document.getElementById("mesesi").value = " ";
+    document.getElementById("venta1").value = " ";
+    document.getElementById("venta2").value = " ";
+    document.getElementById("venta3").value = " ";
+    document.getElementById("sueldob").value = " ";
+    document.getElementById("sueldof").value = " "; 
 }
