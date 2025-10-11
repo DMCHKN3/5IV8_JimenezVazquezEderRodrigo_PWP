@@ -24,6 +24,10 @@ function calcular() {
     var coms1 = parseFloat(v1) * 0.10;
     var coms2 = parseFloat(v2) * 0.10;
     var coms3 = parseFloat(v3) * 0.10;
+    
+    coms1 = parseFloat(coms1.toFixed(2));
+    coms2 = parseFloat(coms2.toFixed(2));
+    coms3 = parseFloat(coms3.toFixed(2));
 
     var totalventas = coms1 + coms2 + coms3;
     totalventas = parseFloat(totalventas.toFixed(2));
