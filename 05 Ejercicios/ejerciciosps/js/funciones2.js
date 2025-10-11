@@ -26,6 +26,8 @@ function calcular() {
     
     var sueldototal = parseFloat(sueldobase) + totalventas;
     sueldototal = parseFloat(sueldototal.toFixed(2));
+
+    document.getElementById("sueldof").value = "$ " + sueldototal;
 }
 
 function borrar() {
