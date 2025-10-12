@@ -26,10 +26,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="number" name="sueldo" id="sueldob"></td>
-                    <td><input type="number" name="venta" id="venta1"></td>
-                    <td><input type="number" name="venta" id="venta2"></td>
-                    <td><input type="number" name="venta" id="venta3"></td>
+                    <td><input type="number" name="sueldo" id="sueldob" onkeypress="return validar(event)"></td>
+                    <td><input type="number" name="venta" id="venta1" onkeypress="return validar(event)"></td>
+                    <td><input type="number" name="venta" id="venta2" onkeypress="return validar(event)"></td>
+                    <td><input type="number" name="venta" id="venta3" onkeypress="return validar(event)"></td>
                     <td><button type="button" class="problema-button" style="margin-top: 1rem;" onclick="calcular()">Calcular sueldo total</button></td>
                     <td><input type="text" name="sueldo" id="sueldof" readonly="readonly"></td>
                 </tr>
