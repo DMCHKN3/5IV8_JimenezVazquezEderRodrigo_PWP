@@ -11,6 +11,8 @@ function calcular() {
     var meses = document.getElementById("mesesi").value
     if (meses > 18) {
         alert("El maximo de meses es 18");
+    }else if(meses <= 0){
+        alert("Favor de ingresar una cantidad mayor a 0");
     }
     var valor = document.getElementById("cantidadi").value
     var parseo = parseFloat(valor);
