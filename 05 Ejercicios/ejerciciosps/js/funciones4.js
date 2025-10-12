@@ -36,14 +36,15 @@ function calificar(){
     var caltrabajo = (trabajo*15)/10;
     var calexamen = (examen * 30)/10;
 
-    promcal = promcal.toFixed(2);
-    caltrabajo = caltrabajo.toFixed(2);
-    calexamen = calexamen.toFixed(2);
+    promcal = parseFloat(promcal.toFixed(2));
+    caltrabajo = parseFloat(caltrabajo.toFixed(2));
+    calexamen = parseFloat(calexamen.toFixed(2));
 
     var califfinal = promcal + caltrabajo + calexamen
-    califfinal = (califfinal.toFixed(2))/10;
+    var califtotal = (califfinal/10);
+    califtotal = califtotal.toFixed(2);
 
-    document.getElementById("calffin").value = califfinal;
+    document.getElementById("calffin").value = califtotal;
 }
 
 function borrar(){
@@ -52,5 +53,5 @@ function borrar(){
     document.getElementById("calf3").value = " ";
     document.getElementById("trabfin").value = " ";
     document.getElementById("exam").value = " ";
-    document.getElementById("califfin").value = " ";
+    document.getElementById("calffin").value = " ";
 }
