@@ -19,11 +19,11 @@ function calculos(){
         alert("Favor de ingresar valores mayores o iguales a 0")
     }
 
-    var d1 = parseFloat(p1) * 0.15;
-    var d2 = parseFloat(p2) * 0.15;
-    var d3 = parseFloat(p3) * 0.15;
-    var d4 = parseFloat(p4) * 0.15;
-    var d5 = parseFloat(p5) * 0.15;
+    var d1 = p1 - (parseFloat(p1) * 0.15);
+    var d2 = p2 - (parseFloat(p2) * 0.15);
+    var d3 = p3 - (parseFloat(p3) * 0.15);
+    var d4 = p4 - (parseFloat(p3) * 0.15);
+    var d5 = p5 - (parseFloat(p4) * 0.15);
     
     d1 = parseFloat(d1.toFixed(2));
     d2 = parseFloat(d2.toFixed(2));
