@@ -27,16 +27,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="number" name="calif" id="calf1"></td>
-                    <td><input type="number" name="calif" id="calf2"></td>
-                    <td><input type="number" name="calif" id="calf3"></td>
-                    <td><input type="number" name="trabajofin" id="trabfin"></td>
-                    <td><input type="number" name="examen" id="exam"></td>
-                    <td><input type="button" value="Calcular promedio"></td>
-                    <td><input type="number" name="calif" id="calf1"></td>
+                    <td><input type="number" name="calif" id="calf1" onkeypress="return validar(e)"></td>
+                    <td><input type="number" name="calif" id="calf2" onkeypress="return validar(e)"></td>
+                    <td><input type="number" name="calif" id="calf3" onkeypress="return validar(e)"></td>
+                    <td><input type="number" name="trabajofin" id="trabfin" onkeypress="return validar(e)"></td>
+                    <td><input type="number" name="examen" id="exam" onkeypress="return validar(e)"></td>
+                    <td><input type="button" value="Calcular promedio" onclick="calificacion()"></td>
+                    <td><input type="number" name="califf" id="calffin" readonly="readonly"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" value="Nuevo alumno" id="borrara"></td>
+                    <td><input type="button" value="Nuevo alumno" id="borrara" onclick="borrar()"></td>
                 </tr>
             </tbody>
         </table>
