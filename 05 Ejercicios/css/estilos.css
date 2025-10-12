@@ -53,6 +53,11 @@ a:hover {
     margin: 0 auto;
 }
 
+.table, thead, tbody{
+    margin: 0 auto;
+    align-items: center;
+}
+
 th, td {
     border: 3px solid black;
     border-collapse: collapse;
