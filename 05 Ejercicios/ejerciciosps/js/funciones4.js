@@ -43,7 +43,7 @@ function calificar(){
     var califfinal = promcal + caltrabajo + calexamen
     califfinal = (califfinal.toFixed(2))/10;
 
-    document.getElementById("califfin").value = califfinal;
+    document.getElementById("calffin").value = califfinal;
 }
 
 function borrar(){
