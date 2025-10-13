@@ -99,12 +99,12 @@
                 <br>
                 Por ejemplo CASA = 3 (c,a,s) PERRO = 4 (p,e,r,o)
                 <br>
-                Considera solamente el alfabeto A-Z, en mayusculas, las palabras ingresadas deben estar separadas or una coma, no se aceptan espacios
+                Considera solamente el alfabeto A-Z, en mayusculas, las palabras ingresadas deben estar separadas por una coma, no se aceptan espacios
             </h3>
             <div class="problema-content">
                 <input type="text" class="problema-input" placeholder="Ingrese las palabras separadas por una coma: "
-                    id="p3-input">
-                <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="">Calcular palabras</button>
+                    id="p3-input" onkeypress="return vermayus(event)">
+                <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="problema3()">Calcular palabras</button>
                 <pre class="problema-output" id="p3-output">Esperando datos...</pre>
             </div>
         </div>
