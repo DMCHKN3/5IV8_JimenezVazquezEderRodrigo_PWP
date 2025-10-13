@@ -21,8 +21,8 @@
                 pueden estar separadas unicamente por espacios</h3>
             <div class="problema-content">
                 <input type="text" class="problema-input" placeholder="Ingrese las palabras separadas por un espacio: "
-                    id="p1-input">
-                <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="">Invertir
+                    id="p1-input" onkeypress="return verletras(event)">
+                <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="problema1()">Invertir
                     palabras</button>
                 <pre class="problema-output" id="p1-output">Esperando datos...</pre>
             </div>
@@ -109,6 +109,7 @@
             </div>
         </div>
     </div>
+    <script src="./js/algoritmia.js"></script>
 </body>
 
 </html>

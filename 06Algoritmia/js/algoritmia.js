@@ -1,5 +1,24 @@
+function  vermayus(){
+     var teclado = (document.all) ? e.keyCode : e.which;
+    if (teclado == 8) return true;
+    var patron = /[A-Z\  ]/;
+    var codigo = String.fromCharCode(teclado);
+    return patron.test(codigo);
+}
+
+function verletras(){
+     var teclado = (document.all) ? e.keyCode : e.which;
+    if (teclado == 8) return true;
+    var patron = /[A-Z\a-z\  ]/;
+    var codigo = String.fromCharCode(teclado);
+    return patron.test(codigo);
+}
+
 function problema1(){
-    //tarea
+   var input = document.getElementById("p1-input").value;
+   var palabras = input.split(" ");
+   var orden = palabras.reverse();
+   document.getElementById("p1-output").textContent = orden.join(" ");
 }
 
 function problema2(){
