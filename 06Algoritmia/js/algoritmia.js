@@ -1,15 +1,15 @@
-function  vermayus(){
+function  vermayus(e){
      var teclado = (document.all) ? e.keyCode : e.which;
     if (teclado == 8) return true;
-    var patron = /[A-Z\  ]/;
+    var patron = /^[A-Z,]$/;
     var codigo = String.fromCharCode(teclado);
     return patron.test(codigo);
 }
 
-function verletras(){
+function verletras(e){
      var teclado = (document.all) ? e.keyCode : e.which;
     if (teclado == 8) return true;
-    var patron = /[A-Z\a-z\  ]/;
+    var patron = /^[A-Za-z\s]$/;
     var codigo = String.fromCharCode(teclado);
     return patron.test(codigo);
 }
