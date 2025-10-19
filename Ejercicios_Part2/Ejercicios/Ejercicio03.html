@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <div class="container-main">
+        <div class="form-container">
+            <form action="post" class="form" id="form">
+                <input type="text" placeholder="Horas trabajadas" id="hrsTrabajadas" onkeypress="return verificar(event)">
+                <br><br>
+                <input type="text" placeholder="Pago por hora" id="pago" onkeypress="return verificar(event)">
+                <br><br>
+                <button type="button" onclick="calcular()">Calcular pago total</button>
+                <br><br>
+                <input type="text" placeholder="Pago total" id="resultado" readonly="readonly">
+                <br><br>
+                <button type="button" onclick="limpiar()">Limpiar</button>
+            </form>
+        </div>
+    </div>
+    <div class="container-footer">
+        <footer>
+            <a href="../MainEjercicios.html">Regresar al index de ejercicios</a>
+        </footer>
+    </div>
+</body>
+</html>
