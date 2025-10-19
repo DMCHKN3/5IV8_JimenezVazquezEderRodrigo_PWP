@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body> 
+    <div class="container-main">
+        <div class="form-container">
+            <form action="post" class="form" id="form">
+                <input type="text" placeholder="Salario mensual" id="salarioMensual" onkeypress="return verificar(event)">
+                <br><br>
+                <input type="text" placeholder="Años de antigüedad" id="antiguedad" onkeypress="return verificar(event)">
+                <br><br>
+                <button type="button" onclick="calcular()">Calcular utilidad</button>
+                <br><br>
+                <input type="text" placeholder="Utilidad anual" id="resultado" readonly="readonly">
+                <br><br>
+                <button type="button" onclick="limpiar()">Limpiar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
