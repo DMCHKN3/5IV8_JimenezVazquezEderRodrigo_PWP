@@ -18,7 +18,6 @@ function calcular(){
     } else {
         resul = n1 + n2;
     }
-    alert("El resultado es: " + resul);
     document.getElementById("resultado").value = resul;
 }
 
