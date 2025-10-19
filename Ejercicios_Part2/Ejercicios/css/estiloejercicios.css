@@ -91,7 +91,7 @@ a:hover {
 }
 
 
-.container-table {
+.container-table, .form-container {
     align-items: center;
     padding: 10px;
     width: 35%;
@@ -112,4 +112,65 @@ table {
 hr {
     border: 2px solid #F2A5C0;
     border-radius: 5px;
+}
+
+form {
+    background-color: #F2A5C0;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid black;
+    width: 80%;
+    margin: 20px auto;
+}
+
+label {
+    font-family: "Zain", sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 2px solid #B5163B;
+    border-radius: 5px;
+    background-color: white;
+    font-family: "Zain", sans-serif;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #E14B72;
+    box-shadow: 0 0 5px #E14B72;
+}
+
+input[type="button"] {
+    background-color: #E14B72;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+    background-color: #B5163B;
+}
+
+pre {
+    background-color: #F2A5C0;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin: 10px auto;
+    font-family: "Zain", sans-serif;
+    font-size: 18px;
+    width: 80%;
+    max-width: 600px;
 }
