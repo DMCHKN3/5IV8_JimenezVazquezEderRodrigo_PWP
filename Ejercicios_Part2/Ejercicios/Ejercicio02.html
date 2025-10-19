@@ -8,16 +8,17 @@
 <body>
     <div class="container-main">
         <form action="post" class="form" id="form">
-            <input type="text" placeholder="Número 1" id="num1" onkeypress="">
+            <input type="text" placeholder="Número 1" id="num1" onkeypress="return verificar(event)">
             <br><br>
-            <input type="text" placeholder="Número 2" id="num2" onkeypress="">
+            <input type="text" placeholder="Número 2" id="num2" onkeypress="return verificar(event)">
             <br><br>
-            <input type="text" placeholder="Número 3" id="num3" onkeypress="">
+            <input type="text" placeholder="Número 3" id="num3" onkeypress="return verificar(event)">
             <br><br>
-            <button type="button" onclick="">Calcular número mayor</button>
+            <button type="button" onclick="calcular()">Calcular número mayor</button>
             <br><br>
-            <input type="text" placeholder="Número mayor" id="numMayor" readonly="readonly">
+            <input type="text" placeholder="Número mayor" id="resultado" readonly="readonly">
         </form>
     </div>
+    <script src="./js/ejercicio2.js"></script>
 </body>
 </html>
