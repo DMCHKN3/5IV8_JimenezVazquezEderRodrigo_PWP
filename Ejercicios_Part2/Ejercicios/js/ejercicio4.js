@@ -15,27 +15,28 @@ function verificara(e){
 }
 
 function calcularUtil(){
-    var salario = parseInt(document.getElementById("salario").value);
+    var salario = parseFloat(document.getElementById("salarioMensual").value);
     var antig = parseInt(document.getElementById("antiguedad").value);
     var utilidad = 0;
 
-    if(ant === 0){
+    if(antig === 0){
         utilidad = salario * 0.05;
-    }else if(ant >= 1 && ant <= 2){
+    }else if(antig >= 1 && antig <= 2){
         utilidad = salario * 0.07;
-    }else if(ant >= 2 && ant <= 5){
+    }else if(antig >= 2 && antig <= 5){
         utilidad = salario * 0.10;
-    }else if(ant >= 5 && ant <= 10){
+    }else if(antig >= 5 && antig <= 10){
         utilidad = salario * 0.15;
-    }else if(ant > 10){
+    }else if(antig > 10){
         utilidad = salario * 0.20;
     }
 
-    document.getElementById("resultado").value = "La utilidad que le corresponde es de: $" + utilidad;
+    alert(utilidad);
+    document.getElementById("resultado").textContent = "La utilidad que le corresponde es de: $" + utilidad;
 }
 
 function limpiar(){
     document.getElementById("salarioMensual").value = "";
     document.getElementById("antiguedad").value = "";
-    document.getElementById("resultado").value = "";
+    document.getElementById("resultado").innerHTML = "Esperando datos...";
 }

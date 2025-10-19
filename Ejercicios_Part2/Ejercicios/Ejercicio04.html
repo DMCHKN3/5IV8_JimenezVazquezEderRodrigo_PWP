@@ -9,13 +9,13 @@
     <div class="container-main">
         <div class="form-container">
             <form action="post" class="form" id="form">
-                <input type="text" placeholder="Salario mensual" id="salarioMensual" onkeypress="return verificar(event)">
+                <input type="number" placeholder="Salario mensual" id="salarioMensual" onkeypress="return verificar(event)">
                 <br><br>
-                <input type="text" placeholder="Años de antigüedad" id="antiguedad" onkeypress="return verificara(event)">
+                <input type="number" placeholder="Años de antigüedad" id="antiguedad" onkeypress="return verificara(event)">
                 <br><br>
                 <button type="button" onclick="calcularUtil()">Calcular utilidad</button>
                 <br><br>
-                <input type="text" placeholder="Utilidad anual" id="resultado" readonly="readonly">
+                <pre id="resultado">Esperando datos...</pre>
                 <br><br>
                 <button type="button" onclick="limpiar()">Limpiar</button>
             </form>
