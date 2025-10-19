@@ -8,20 +8,22 @@
 <body>
     <div class="container-main">  
         <div class="container-form">
-            <form action="" id="Formulario" onsubmit="" method="get">
+            <form action="" id="Formulario" onsubmit="calcular()" method="get">
                 <label for="">Numero 1</label>
                 <br>
-                <input type="number" name="numero" id="num1" placeholder="Ingrese el primer numero">
+                <input type="number" name="numero" id="num1" placeholder="Ingrese el primer numero" onkeypress="return validar(event)">
                 <br>
                 <label for="">Numero 2</label>
                 <br>
-                <input type="number" name="numero" id="num2" placeholder="Ingrese el segundo numero">
+                <input type="number" name="numero" id="num2" placeholder="Ingrese el segundo numero" onkeypress="return validar(event)">
                 <br>
                 <button type="submit">Enviar calculo</button>
                 <br>
                 <label for="" id="resultado">Si son iguales son multiplos, si el primero es mayor que el segundo que los reste y sino que los sume.</label>
                 <br>
                 <input type="text" name="solucion" id="resultado" placeholder="Aqui se mostrara el resultado" readonly="readonly">
+                <br>
+                <label for="" id="borrar" onclick="limpiar()">Limpar formulario</label>
             </form>
         </div>
     </div>
