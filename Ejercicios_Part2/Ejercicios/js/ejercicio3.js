@@ -23,3 +23,9 @@ function calcular(){
 
     document.getElementById("resultado").value = pagototal;
 }
+
+function limpiar(){
+    document.getElementById("hrsTrabajadas").value = "";
+    document.getElementById("pago").value = "";
+    document.getElementById("resultado").value = "";
+}
