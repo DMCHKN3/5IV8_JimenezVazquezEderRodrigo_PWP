@@ -13,14 +13,13 @@ function calcular(){
 
     var horasExtra = horas - 40;
 
-    if(horas > 40 || horasExtra > 0 || horasExtra <= 8){
+    if(horas > 40 || horasExtra > 0 && horasExtra <= 8){
         pagototal = (40 * pago) + (horasExtra * pago * 2);
-    }else if(horas > 40 || horasExtra > 0 || horasExtra > 8 ){
+    }else if(horas > 40 || horasExtra > 0 && horasExtra > 8 ){
         pagototal = (40 * pago) + (8 * pago * 2) + ((horasExtra - 8) * pago * 3);
     }else{
-        pagototal = horas * pago;
+        pagototal = pago * horas;
     }
-
     document.getElementById("resultado").value = pagototal;
 }
 
