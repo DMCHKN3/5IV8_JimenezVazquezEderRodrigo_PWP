@@ -1,4 +1,4 @@
-function verificar(){
+function verificar(e){
     var teclado = (document.all) ? e.keyCode : e.which;
     if (teclado == 8) return true;
     var patron = /[0-9\d .]/;
@@ -7,18 +7,19 @@ function verificar(){
 }
 
 function calcular(){
-    var num1 = parseFloat(document.getElementById("num1").value);
-    var num2 = parseFloat(document.getElementById("num2").value);
+    var n1 = parseFloat(document.getElementById("num1").value);
+    var n2 = parseFloat(document.getElementById("num2").value);
 
-    var resultado = 0;
-    if (num1 === num2){
-        resultado = num1 * num2;
-    } else if (num1 > num2) {
-        resultado = num1 - num2;
+    var resul = 0;
+    if (n1 === n2){
+        resul = n1 * n2;
+    } else if (n1 > n2) {
+        resul = n1 - n2;
     } else {
-        resultado = num1 + num2;
+        resul = n1 + n2;
     }
-    document.getElementById("resultado").value = resultado;
+    alert("El resultado es: " + resul);
+    document.getElementById("resultado").value = resul;
 }
 
 function limpiar(){
