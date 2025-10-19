@@ -11,9 +11,9 @@
             <form action="post" class="form" id="form">
                 <input type="text" placeholder="Salario mensual" id="salarioMensual" onkeypress="return verificar(event)">
                 <br><br>
-                <input type="text" placeholder="Años de antigüedad" id="antiguedad" onkeypress="return verificar(event)">
+                <input type="text" placeholder="Años de antigüedad" id="antiguedad" onkeypress="return verificara(event)">
                 <br><br>
-                <button type="button" onclick="calcular()">Calcular utilidad</button>
+                <button type="button" onclick="calcularUtil()">Calcular utilidad</button>
                 <br><br>
                 <input type="text" placeholder="Utilidad anual" id="resultado" readonly="readonly">
                 <br><br>
@@ -21,5 +21,11 @@
             </form>
         </div>
     </div>
+    <div class="container-footer">
+        <footer>
+            <a href="../MainEjercicios.html">Regresar al index de ejercicios</a>
+        </footer>
+    </div>
+    <script src="./js/ejercicio4.js"></script>
 </body>
 </html>
