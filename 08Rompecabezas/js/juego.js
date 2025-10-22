@@ -236,4 +236,11 @@ function iniciar(){
     capturarTeclas();
 }
 
+function reiniciar(){
+    // Mezclar las piezas nuevamente
+    mezclarPiezas(30);
+    //Capturar teclas
+    capturarTeclas();
+}
+
 iniciar();
