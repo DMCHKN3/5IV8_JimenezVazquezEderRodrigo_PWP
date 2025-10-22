@@ -1,6 +1,6 @@
 var instrucciones = [
-    "Utiliza las flechas de navegación para mover las piezas",
-    "Para ordenar las piezas guíate por la imagen objetivo"
+    "Utiliza las flechas de navegación para mover las piezas jeje",
+    "Para ordenar las piezas guiate por la imagen objetivo"
 ];
 
 //vamos a guardar dentro de una variable los movimeintos del rompecabezas
@@ -22,7 +22,7 @@ var rompeCorrecta = [
 ];
 
 //necesito saber las coordenadas de la pieza vacia, la que se va a mover
-var filaVacia = 2;
+var filaVacia = 2;  
 var columnaVacia = 2;
 
 //necesitamos ahora si una funcion que se encargue de mostrar las instrucciones
@@ -35,7 +35,7 @@ function mostrarInstrucciones(instrucciones){
 
 //esta funcion se encarga de crear el componente li y agregar la lista de dichas instrucciones
 
-function mostrarInstruccionesLista(instruccion, idLista) {
+function mostrarInstruccionesLista(instruccion, idLista){
     var ul = document.getElementById(idLista);
     var li = document.createElement("li");
     li.textContent = instruccion;
@@ -134,7 +134,7 @@ function moverEnDireccion(direccion){
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         //tengo que guardar el ultimo movimiento porque lo tewngo que mostrar
 
-        actualizarUltimoMovimiento(direccion);
+        agregarUltimoMovimiento(direccion);
     }
 }
 
@@ -169,7 +169,7 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
 }
 
 //debo de actualizar los movs en el DOM tmb
-function actualizarUltimoMovimiento(direccion){
+function actualizarUltimoMovimeinto(direccion){
     var ultimoMovimiento = document.getElementById("flecha");
     switch(direccion){
         case codigosDireccion.ARRIBA:
@@ -189,7 +189,7 @@ function actualizarUltimoMovimiento(direccion){
 
 //necesitamos poder mezclar todas las piezas
 
-function mezclarPiezas(veces) {
+function mezclarPiezas(){
     if(veces <= 0){
         alert("Asi no se puede");
         return;
@@ -228,19 +228,14 @@ function capturarTeclas(){
 }
 
 function iniciar(){
-    // Primero mostrar instrucciones
-    mostrarInstrucciones(instrucciones);
-    // Luego mezclar las piezas
+    //mezclar las piezas
     mezclarPiezas(30);
-    // Finalmente capturar teclas
     capturarTeclas();
-}
-
-function reiniciar(){
-    // Mezclar las piezas nuevamente
-    mezclarPiezas(30);
-    //Capturar teclas
-    capturarTeclas();
+    //capturar el ultimo movimiento
 }
 
 iniciar();
+
+//mandamos traer a la funcion
+
+mostrarInstrucciones(instrucciones);
