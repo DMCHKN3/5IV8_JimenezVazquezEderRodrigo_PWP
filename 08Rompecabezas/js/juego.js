@@ -134,7 +134,7 @@ function moverEnDireccion(direccion){
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         //tengo que guardar el ultimo movimiento porque lo tewngo que mostrar
 
-        agregarUltimoMovimiento(direccion);
+        actualizarUltimoMovimiento(direccion);
     }
 }
 
@@ -169,7 +169,7 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
 }
 
 //debo de actualizar los movs en el DOM tmb
-function actualizarUltimoMovimeinto(direccion){
+function actualizarUltimoMovimiento(direccion){
     var ultimoMovimiento = document.getElementById("flecha");
     switch(direccion){
         case codigosDireccion.ARRIBA:
@@ -189,7 +189,7 @@ function actualizarUltimoMovimeinto(direccion){
 
 //necesitamos poder mezclar todas las piezas
 
-function mezclarPiezas(){
+function mezclarPiezas(veces) {
     if(veces <= 0){
         alert("Asi no se puede");
         return;
