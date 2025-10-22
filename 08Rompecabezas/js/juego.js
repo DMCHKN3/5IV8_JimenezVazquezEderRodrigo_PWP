@@ -1,6 +1,6 @@
 var instrucciones = [
-    "Utiliza las flechas de navegación para mover las piezas jeje",
-    "Para ordenar las piezas guiate por la imagen objetivo"
+    "Utiliza las flechas de navegación para mover las piezas",
+    "Para ordenar las piezas guíate por la imagen objetivo"
 ];
 
 //vamos a guardar dentro de una variable los movimeintos del rompecabezas
@@ -228,6 +228,9 @@ function capturarTeclas(){
 }
 
 function iniciar(){
+    //mandamos traer a la funcion
+    mostrarInstrucciones(instrucciones);
+
     //mezclar las piezas
     mezclarPiezas(30);
     capturarTeclas();
@@ -235,7 +238,3 @@ function iniciar(){
 }
 
 iniciar();
-
-//mandamos traer a la funcion
-
-mostrarInstrucciones(instrucciones);
