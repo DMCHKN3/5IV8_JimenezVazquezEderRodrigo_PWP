@@ -35,7 +35,7 @@ function mostrarInstrucciones(instrucciones){
 
 //esta funcion se encarga de crear el componente li y agregar la lista de dichas instrucciones
 
-function mostrarInstruccionesLista(instruccion, idLista){
+function mostrarInstruccionesLista(instruccion, idLista) {
     var ul = document.getElementById(idLista);
     var li = document.createElement("li");
     li.textContent = instruccion;
@@ -232,10 +232,8 @@ function iniciar(){
     mezclarPiezas(30);
     capturarTeclas();
     //capturar el ultimo movimiento
+    mostrarInstrucciones(instrucciones);
+    //se muestran las instrucciones
 }
 
 iniciar();
-
-//mandamos traer a la funcion
-
-mostrarInstrucciones(instrucciones);
