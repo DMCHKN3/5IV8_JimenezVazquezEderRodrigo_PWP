@@ -71,13 +71,13 @@ function mostrarCartelGanador(){
 */
 
 function intercambiarPosicionesRompe(filaPos1, columnaPos1, filaPos2, columnaPos2){
-    var pos1 = rompe[filaPos1,columnaPos1];
-    var pos2 = rompe[filaPos2, columnaPos2];
+    var pos1 = rompe[filaPos1][columnaPos1];
+    var pos2 = rompe[filaPos2][columnaPos2];
 
     //intercambio
 
-    rompe[filaPos1, columnaPos1] = pos2;
-    rompe[filaPos2, columnaPos2] = pos1;
+    rompe[filaPos1][columnaPos1] = pos2;
+    rompe[filaPos2][columnaPos2] = pos1;
 }    
 
 //crear una funcion que se encargue de saber donde esta la pieza vacia
@@ -139,8 +139,8 @@ function moverEnDireccion(direccion){
 }
 
 function intercambiarPosiciones(fila1, columna1, fila2, columna2){
-    var pieza1 = rompe[fila1,columna1];
-    var pieza2 = rompe[fila2, columna2];
+    var pieza1 = rompe[fila1][columna1];
+    var pieza2 = rompe[fila2][columna2];
 
     //intercambio ya debe de ser por parte de los frames y el html
 
@@ -154,17 +154,18 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
     var pieza2 = document.getElementById(idPieza2);
 
     //vamos a clonarlas
-    var padre = elementoPieza1.parentNode;
+    var padre = pieza1.parentNode;
+    var padre2 = pieza2.parentNode;
 
     //lo clono
 
-    var clonElemento1 = elementoPieza1.cloneNode(true);
-    var clonElemento2 = elementoPieza2.cloneNode(true);
+    var clonElemento1 = pieza1.cloneNode(true);
+    var clonElemento2 = pieza2.cloneNode(true);
 
     //reemplazar a los padres con sus clones
 
-    padre.replaceChild(clonElemento1, elementoPieza2);
-    padre.replaceChild(clonElemento2, elementoPieza1);
+    padre.replaceChild(clonElemento1, pieza2);
+    padre2.replaceChild(clonElemento2, pieza1);
 }
 
 //debo de actualizar los movs en el DOM tmb
