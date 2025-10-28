@@ -30,7 +30,7 @@ const pokedex = () => {
     //necesitamos un objto que se encargue de guardar las rutas de las imgs q vamos a cambiar dependiendo de si es una busqueda, lo encontro o no al pokemon
 
     const images = {
-        imgPokemonNotFound: "../img/404.png", 
+        imgPokemonNotFound: "../img/404.png",
         imgLoading: "../img/loading.gif"
     };
 
@@ -59,4 +59,62 @@ const pokedex = () => {
     //las promesas son de tipo asincronas
     //la agrupacion de los elementos en este objeto debe ser una estructurta que nos permita crear 
     // funciones mas pequeñas que sin importar el orden puedan obtener cada uno de los datos solicitados
-}
+
+    const processPokemonType = (pokemonData) => {
+        //primero necesitamos obtener el tipo de pokemon, el nombre y la clase para que se modifique en el html, una vez con ello tenemos que obtener los stats, movs, habs
+
+        let pokemonType = "";
+        //utilizo una busqueda de la clase de pokemon, eso se refiere al tipo de pokemon
+
+        const firstClass = pokemonData.types[0].type.name;
+
+        pokemonData.types.forEach((pokemonTypeData) => {
+            //necesito tener la etiqueta de cada cambio
+            pokemonType += `<span class = "pokemon-type ${pokemonData.type.name}"> ${pokemonTypeData.type.name}</span>`
+        });
+        //para poder quitar y cambiar el contenedor dependiendo del tipo tengo que saber a cual pertenece
+
+        if (currentClassType) {
+            containers.pokemonMovesElement.classList.remove(currentClassType);
+            containers.pokemonAbilitiesElement.classList.remove(currentClassType);
+        }//ahora tengo que agregar lo nuevo
+        containers.pokemmonMovesElement.classList.add(firstClass);
+        containers.pokemonAbilitiesElement.classList.add(firstClass);
+        //debo de agregar las etiquetas creadas dentro del forEach
+
+        containers.pokemonTypesContainer.innerHTML = pokemonType;
+    };
+
+    //ahora necesitamos obtener las stats del pokemon
+    const processPokemonStats = (pokemonData) => {
+        pokemonData.stats?.forEach((pokemonStatData) => {
+            //vamos a evaluar si encuentra el nombre de la stat para colocarlo en su container correspondiente
+            switch (pokemonStatData.stat.name) {
+                case "hp":
+                    pokemonStatsElements.hp.innerHTML = pokemonStatData.base_stat;
+                    pokemonStatsElements.hp.style = `background: linear-gradient(0deg, rgba(0,118,255,1) ${pokemonStatData.base_stat}%, rgba(0,0,0,1) ${pokemonStatData.base_stat}%);`;
+                    break;
+                case "attack":
+                    pokemonStatsElements.attack.innerHTML = pokemonStatData.base_stat;
+                    pokemonStatsElements.attack.style = `background: linear-gradient(0deg, rgba(0,118,255,1) ${pokemonStatData.base_stat}%, rgba(0,0,0,1) ${pokemonStatData.base_stat}%);`;
+                    break;
+                case "defense":
+                    pokemonStatsElements.defense.innerHTML = pokemonStatData.base_stat;
+                    pokemonStatsElements.defense.style = `background: linear-gradient(0deg, rgba(0,118,255,1) ${pokemonStatData.base_stat}%, rgba(0,0,0,1) ${pokemonStatData.base_stat}%);`;
+                    break;
+                case "special-attack":
+                    pokemonStatsElements.specialAttack.innerHTML = pokemonStatData.base_stat;
+                    pokemonStatsElements.specialAttack.style = `background: linear-gradient(0deg, rgba(0,118,255,1) ${pokemonStatData.base_stat}%, rgba(0,0,0,1) ${pokemonStatData.base_stat}%);`;
+                    break;
+                case "special-defense":
+                    pokemonStatsElements.specialDefense.innerHTML = pokemonStatData.base_stat;
+                    pokemonStatsElements.specialDefense.style = `background: linear-gradient(0deg, rgba(0,118,255,1) ${pokemonStatData.base_stat}%, rgba(0,0,0,1) ${pokemonStatData.base_stat}%);`;
+                    break;
+                case "speed":
+                    pokemonStatsElements.speed.innerHTML = pokemonStatData.base_stat;
+                    pokemonStatsElements.speed.style = `background: linear-gradient(0deg, rgba(0,118,255,1) ${pokemonStatData.base_stat}%, rgba(0,0,0,1) ${pokemonStatData.base_stat}%);`;
+                    break;
+            }
+        });
+    };
+};
