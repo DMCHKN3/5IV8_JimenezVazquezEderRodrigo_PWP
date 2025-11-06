@@ -80,6 +80,8 @@ const valoAPI = () => {
     let currentMapIndex = 0;
     let currentWeaponIndex = 0;
 
+    //obtener todos los datos
+
     const getAgents = async () => {
         try {
             const response = await fetch(agentsURL);
@@ -136,6 +138,8 @@ const valoAPI = () => {
         }
     };
 
+
+    //mostrar los datos de los agentes
     const displayAgent = (agent) => {
         if(!agent){
             console.warn("Agente no encontrado");
@@ -184,4 +188,153 @@ const valoAPI = () => {
         }
     };
 
+    //mostrar los datos de los modos de juego
+    const displayGamemode = (gamemode) => {
+        if(!gamemode){
+            console.warn("Modo de Juego no encontrado");
+            return;
+        }
+
+        if(gamemodeContainers.imageContainer){
+            gamemodeContainers.imageContainer.innerHTML = `<img class="gmmd-display" src="${gamemode.displayIcon}" alt="${gamemode.displayName}">`;
+        }
+
+        if(gamemodeContainers.nameDisplay){
+            gamemodeContainers.nameDisplay.textContent = gamemode.displayName;
+        }
+
+        if(gamemodeContainers.description){
+            gamemodeContainers.description.textContent = gamemode.description || "Sin descripción";
+        }
+
+        if(gamemodeContainers.duration){
+            gamemodeContainers.duration.textContent = gamemode.duration || "N/A"
+        }
+    };
+
+    const searchGamemode = (gamemodeName) => {
+        if (!gamemodeName){
+            alert("Por favor ingresa el nombre de un modo de juego");
+            return;
+        }
+
+        const gamemode = gamemodesData.find(g => g.displayName.toLowerCase().includes(gamemodeName.toLowerCase()));
+
+        if (gamemode){
+            currentGamemodeIndex = gamemodesData.indexOf(gamemode);
+            displayGamemode(gamemode);
+        }else{
+            alert("Modo de Juego no encontrado");
+        }
+    };
+    
+    //mostrar los datos de los mapas
+    const displayMap = (map) => {
+        if(!map){
+            console.warn("Mapa no encontrado");
+            return;
+        }
+
+        if(mapContainers.imageContainer){
+            mapContainers.imageContainer.innerHTML = `<img class="map-display" src="${map.displayIcon}" alt="${map.displayName}">`;
+        }
+
+        if(mapContainers.nameDisplay){
+            mapContainers.nameDisplay.textContent = map.displayName;
+        }
+
+        if(mapContainers.description){
+            mapContainers.description.textContent = map.narrativeDescription || map.tacticalDescription || "Sin descripción";
+        }
+
+        if(mapContainers.coordinates){
+            mapContainers.coordinates.textContent = map.coordinates || "N/A"
+        }
+    };
+
+    const searchMap = (mapName) => {
+        if (!mapName){
+            alert("Por favor ingresa el nombre de un mapa");
+            return;
+        }
+
+        const map = mapsData.find(m => m.displayName.toLowerCase().includes(mapName.toLowerCase()));
+
+        if (map){
+            currentMapIndex = mapsData.indexOf(map);
+            displayMap(map);
+        }else{
+            alert("Mapa no encontrado");
+        }
+    };
+
+    //mostrar datos de las armas
+    const displayWeapon = (weapon) => {
+        if(!weapon){
+            console.warn("Arma no encontrada");
+            return;
+        }
+
+        if(weaponContainers.imageContainer){
+            weaponContainers.imageContainer.innerHTML = `<img class="weapon-display" src="${weapon.displayIcon}" alt="${weapon.displayName}">`;
+        }
+
+        if(weaponContainers.nameDisplay){
+            weaponContainers.nameDisplay.textContent = weapon.displayName;
+        }
+
+        if(weaponContainers.category){
+            weaponContainers.category.textContent = weapon.category || "Sin categoria";
+        }
+
+        const stats = weapon.weaponStats;
+        if (stats){
+            if(weaponStats.weaponfireRate){
+                weaponContainers.fireRate.textContent = stats.fireRate || "N/A";
+            }
+
+            if(weaponStats.weaponreloadTime){
+                weaponContainers.reloadTime.textContent = stats.reloadTime || "N/A";
+            }
+
+            if(weaponStats.penetration){
+                weaponContainers.penetration.textContent = stats.wallPenetration || "N/A";
+            }
+
+            const damageRanges = stats.damageRanges?.[0];
+            if(damageRanges){
+                if(weaponContainers.headDamage){
+                    weaponContainers.headDamage.textContent = damageRanges.headDamage || "N/A";
+                }
+
+                if(weaponContainers.bodyDamage){
+                    weaponContainers.bodyDamage.textContent = damageRanges.bodyDamage || "N/A";
+                }
+
+                if(weaponContainers.legDamage){
+                    weaponContainers.legDamage.textContent = damageRanges.legDamage || "N/A";
+                }
+            }
+        }
+
+        if(weaponContainers.cost){
+            weaponContainers.cost.textContent = weapon.shopData?.cost || "N/A";
+        }
+    };
+
+    const searchWeapon = (weaponName) => {
+        if (!weaponName){
+            alert("Por favor ingresa el nombre de un arma");
+            return;
+        }
+
+        const weapon = gamemodesData.find(w => w.displayName.toLowerCase().includes(weaponName.toLowerCase()));
+
+        if (weapon){
+            currentGamemodeIndex = gamemodesData.indexOf(weapon);
+            displayGamemode(gamemode);
+        }else{
+            alert("Agente no encontrado");
+        }
+    };
 }
