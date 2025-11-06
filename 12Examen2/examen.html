@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API de Valorant - Examen</title>
+    <script src="https://kit.fontawesome.com/101326ea39.js"></script>
+</head>
+
+<body>
+    <div class="container-header">
+        <header>
+            <h2>En mi examen utilice la API de Valorant, dentro de esta API unicamente voy a usar: Agentes, modos de
+                juego, armas y mapas</h2>
+        </header>
+    </div>
+    <div class="container-main">
+        <h2>Link de la API: <a href="https://dash.valorant-api.com" target="_blank">https://dash.valorant-api.com</a>
+        </h2>
+        <!-- Seccion de Agentes -->
+        <section name="sect-busqueda-agentes">
+            <section id="agentes" class="busquedas">
+                <div class="container-busqueda">
+                    <input type="text" id="agnt-name" class="glass-input" placeholder="Ingrese el nombre del agente">
+                    <button id="btn-search-agnt" class="btn-search"><i
+                            class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-up-agnt"><i class="fa-solid fa-caret-up"></i></button>
+                    </div>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-down-agnt"><i class="fa-solid fa-caret-down"></i></button>
+                    </div>
+                    <div id="agntdisplay-container" class="d-flex center-flex agntdisplay-container">
+                        <img class="agntdisplay" src="./img/valorant-logo.png" alt="Agntdisplay">
+                    </div>
+                </div>
+            </section>
+            <section id="agent-data" class="agent-data">
+                <h3 id="agnt-name-display" class="center-flex"></h3>
+                <div class="center-flex">
+                    <div>Nombre del agente: <span id="agnt-name"></span></div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td colspan="4">Informacion del Agente</td>
+                        </tr>
+                        <tr>
+                            <td>Rol: </td>
+                            <td>Descripcion: </td>
+                            <td>Habilidades: </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="agent-info" id="agnt-role"></td>
+                            <td class="agent-info" id="agnt-description"></td>
+                            <td class="agent-info" id="agnt-abilities"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        <!-- Seccion de Modos de Juego -->
+        <section name="sect-modos-juego">
+            <section id="modos-juego" class="busquedas">
+                <div class="container-busqueda">
+                    <input type="text" id="gamemode-name" class="glass-input"
+                        placeholder="Ingrese el nombre del modo de juego">
+                    <button id="btn-search-gamemode" class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-up-gamemode"><i class="fa-solid fa-caret-up"></i></button>
+                    </div>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-down-gamemode"><i class="fa-solid fa-caret-down"></i></button>
+                    </div>
+                    <div id="gmmd-display-container" class="d-flex center-flex gmmd-display-container">
+                        <img class="gmmd-display" src="./img/valorant-logo.png" alt="Gamemode Display">
+                    </div>
+                </div>
+            </section>
+            <section id="gamemode-data">
+                <h3 id="gamemode-name-display" class="center-flex"></h3>
+                <div class="center-flex">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td colspan="4">Informacion del Modo de Juego</td>
+                            </tr>
+                            <tr>
+                                <td>Nombre: </td>
+                                <td>Descripcion: </td>
+                                <td>Duracion: </td>
+                                <td>Tipo de Economia: </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="gamemode-info" id="gamemode-name"></td>
+                                <td class="gamemode-info" id="gamemode-description"></td>
+                                <td class="gamemode-info" id="gamemode-duration"></td>
+                                <td class="gamemode-info" id="gamemode-economy-type"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+        <!-- Seccion de Mapas -->
+        <section name="sect-mapas">
+            <section id="mapas" class="busquedas">
+                <div class="container-busqueda">
+                    <input type="text" id="map-name" class="glass-input"
+                        placeholder="Ingrese el nombre del mapa">
+                    <button id="btn-search-map" class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-up-map"><i class="fa-solid fa-caret-up"></i></button>
+                    </div>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-down-map"><i class="fa-solid fa-caret-down"></i></button>
+                    </div>
+                    <div id="map-display-container" class="d-flex center-flex map-display-container">
+                        <img class="map-display" src="./img/valorant-logo.png" alt="Map Display">
+                    </div>
+                </div>
+            </section>
+            <section id="map-data">
+                <h3 id="map-name-display" class="center-flex"></h3>
+                <div class="center-flex">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td colspan="3">Informacion del Mapa</td>
+                            </tr>
+                            <tr>
+                                <td>Nombre: </td>
+                                <td>Descripcion: </td>
+                                <td>Coordenadas: </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="map-info" id="map-name"></td>
+                                <td class="map-info" id="map-description"></td>
+                                <td class="map-info" id="map-coordinates"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- Seccion de Armas -->
+        <section name="sect-weapons">
+            <section id="weapons" class="busquedas">
+                <div class="container-busqueda">
+                    <input type="text" id="weapon-name" class="glass-input"
+                        placeholder="Ingrese el nombre del arma">
+                    <button id="btn-search-weapon" class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-up-weapon"><i class="fa-solid fa-caret-up"></i></button>
+                    </div>
+                    <div class="row-elements">
+                        <button class="btn" id="btn-down-weapon"><i class="fa-solid fa-caret-down"></i></button>
+                    </div>
+                    <div id="weapon-display-container" class="d-flex center-flex weapon-display-container">
+                        <img class="weapon-display" src="./img/valorant-logo.png" alt="Weapon Display">
+                    </div>
+                </div>
+            </section>
+            <section id="weapon-data">
+                <h3 id="weapon-name-display" class="center-flex"></h3>
+                <div class="center-flex">
+                    <div>Nombre del arma: <span id="display-weapon-name"></span></div>
+                    <div>Categoria del arma: <span id="display-weapon-category"></span></div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td colspan="7">Estadisticas del arma</td>
+                            </tr>
+                            <tr>
+                                <td>Fire rate: </td>
+                                <td>Tiempo de recarga: </td>
+                                <td>Penetracion en la pared: </td>
+                                <td>Daño a la cabeza: </td>
+                                <td>Daño al pecho: </td>
+                                <td>Daño a las piernas: </td>
+                                <td>Coste: </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="weapon-info" id="weapon-fire-rate"></td>
+                                <td class="weapon-info" id="weapon-reload-time"></td>
+                                <td class="weapon-info" id="weapon-penetration"></td>
+                                <td class="weapon-info" id="weapon-head-damage"></td>
+                                <td class="weapon-info" id="weapon-body-damage"></td>
+                                <td class="weapon-info" id="weapon-leg-damage"></td>
+                                <td class="weapon-info" id="weapon-cost"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </div>
+</body>
+
+</html>
