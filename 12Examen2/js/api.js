@@ -4,7 +4,7 @@ const weaponsURL = "https://valorant-api.com/v1/weapons";
 const gamemodesURL = "https://valorant-api.com/v1/gamemodes";
 
 const valoAPI = () => {
-    const agentContainers ={
+    const agentContainers = {
         imageContainer: document.getElementById("agntdisplay-container"),
         nameContainer: document.getElementById("agnt-name-display"),
         role: document.getElementById("agnt-role"),
@@ -70,6 +70,11 @@ const valoAPI = () => {
         down: document.getElementById("btn-down-weapon")
     };
 
+    const imageTemplate = "<img class='{className}' src='{src}' alt='{altText}'/>";
+    const images = {
+        img404: "./img/404.png"
+    }
+
     let agentsData = [];
     let gamemodesData = [];
     let mapsData = [];
@@ -84,7 +89,13 @@ const valoAPI = () => {
 
     const getAgents = async () => {
         try {
-            const response = await fetch(agentsURL);
+            const response = await fetch(agentsURL, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) throw new Error("Request Failed");
             const data = await response.json();
             agentsData = data.data.filter(agent => agent.isPlayableCharacter);
             console.log("Agentes cargados: ", agentsData.length);
@@ -98,7 +109,13 @@ const valoAPI = () => {
 
     const getGamemodes = async () => {
         try {
-            const response = await fetch(gamemodesURL);
+            const response = await fetch(gamemodesURL, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) throw new Error("Request Failed");
             const data = await response.json();
             gamemodesData = data.data;
             console.log("Modos de juego cargados: ", gamemodesData.length);
@@ -112,7 +129,13 @@ const valoAPI = () => {
 
     const getMaps = async () => {
         try {
-            const response = await fetch(mapsURL);
+            const response = await fetch(mapsURL, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) throw new Error("Request Failed");
             const data = await response.json();
             mapsData = data.data;
             console.log("Mapas cargados: ", mapsData.length);
@@ -126,7 +149,13 @@ const valoAPI = () => {
 
     const getWeapons = async () => {
         try {
-            const response = await fetch(weaponsURL);
+            const response = await fetch(weaponsURL, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) throw new Error("Request Failed");
             const data = await response.json();
             weaponsData = data.data;
             console.log("Armas cargadas: ", weaponsData.length);
@@ -140,201 +169,223 @@ const valoAPI = () => {
 
 
     //mostrar los datos de los agentes
+    const processAgentAbilities = (agent) => {
+        let abilitiesHTML = "<ul style='list-style-type: none; padding: 0;'>";
+        agent.abilities?.forEach(ability => {
+            abilitiesHTML += `<li>${ability.displayName}: ${ability.description}</li>`;
+        });
+        abilitiesHTML += "</ul>";
+        return abilitiesHTML;
+    };
+
     const displayAgent = (agent) => {
-        if(!agent){
+        if (!agent) {
             console.warn("Agente no encontrado");
             return;
         }
 
-        if(agentContainers.imageContainer){
-            agentContainers.imageContainer.innerHTML = `<img class="weapon-display" src="${agent.displayIcon}" alt="${agent.displayName}">`;
+        if (agentContainers.imageContainer) {
+            agentContainers.imageContainer.innerHTML = imageTemplate
+                .replace('{className}', 'agnt-display')
+                .replace('{src}', agent.displayIcon || images.img404)
+                .replace('{altText}', agent.displayName);
         }
 
-        if(agentContainers.nameDisplay){
-            agentContainers.nameDisplay.textContent = agent.displayName;
+        if (agentContainers.nameDisplay) {
+            agentContainers.nameDisplay.innerHTML = agent.displayName;
         }
 
-        if(agentContainers.role){
-            agentContainers.role.textContent = agent.role ? agent.role.displayName : "Sin rol";
+        if (agentContainers.role) {
+            agentContainers.role.innerHTML = agent.role ? agent.role.displayName : "Sin rol";
         }
 
-        if(agentContainers.description){
-            agentContainers.description.textContent = agent.description || "Sin descripción";
+        if (agentContainers.description) {
+            agentContainers.description.innerHTML = agent.description || "Sin descripción";
         }
 
-        if(agentContainers.abilities){
-            let abilitiesHTML = "<ul>";
-            agent.abilities?.forEach(ability => {
-                abilitiesHTML += `<li>${ability.displayName}: ${ability.description}</li>`;
-            });
-            abilitiesHTML += "</ul>";
-            agentContainers.abilities.innerHTML = abilitiesHTML;
+        if (agentContainers.abilities) {
+            agentContainers.abilities.innerHTML = processAgentAbilities(agent);
         }
     };
 
     const searchAgent = (agentName) => {
-        if (!agentName){
+        if (!agentName) {
             alert("Por favor ingresa el nombre de un agente");
             return;
         }
 
         const agent = agentsData.find(a => a.displayName.toLowerCase().includes(agentName.toLowerCase()));
 
-        if (agent){
+        if (agent) {
             currentAgentIndex = agentsData.indexOf(agent);
             displayAgent(agent);
-        }else{
+        } else {
             alert("Agente no encontrado");
         }
     };
 
     //mostrar los datos de los modos de juego
     const displayGamemode = (gamemode) => {
-        if(!gamemode){
+        if (!gamemode) {
             console.warn("Modo de Juego no encontrado");
             return;
         }
 
-        if(gamemodeContainers.imageContainer){
-            gamemodeContainers.imageContainer.innerHTML = `<img class="gmmd-display" src="${gamemode.displayIcon}" alt="${gamemode.displayName}">`;
+        if (gamemodeContainers.imageContainer) {
+            gamemodeContainers.imageContainer.innerHTML = imageTemplate
+                .replace('{className}', 'gmmd-display')
+                .replace('{src}', icon)
+                .replace('{altText}', gamemode.displayName);
         }
 
-        if(gamemodeContainers.nameDisplay){
-            gamemodeContainers.nameDisplay.textContent = gamemode.displayName;
+        if (gamemodeContainers.nameDisplay) {
+            gamemodeContainers.nameDisplay.innerHTML = gamemode.displayName;
         }
 
-        if(gamemodeContainers.description){
-            gamemodeContainers.description.textContent = gamemode.description || "Sin descripción";
+        if (gamemodeContainers.description) {
+            gamemodeContainers.description.innerHTML = gamemode.description || "Sin descripción";
         }
 
-        if(gamemodeContainers.duration){
-            gamemodeContainers.duration.textContent = gamemode.duration || "N/A"
+        if (gamemodeContainers.duration) {
+            gamemodeContainers.duration.innerHTML = gamemode.duration || "N/A"
+        }
+
+        if (gamemodeContainers.economyType) {
+            gamemodeContainers.economyType.innerHTML = gamemode.economyType || "N/A"
         }
     };
 
-    const searchGamemode = (gamemodeName) => {
-        if (!gamemodeName){
+    const setGamemodeData = (gamemodeName) => {
+        if (!gamemodeName) {
             alert("Por favor ingresa el nombre de un modo de juego");
             return;
         }
 
         const gamemode = gamemodesData.find(g => g.displayName.toLowerCase().includes(gamemodeName.toLowerCase()));
 
-        if (gamemode){
+        if (gamemode) {
             currentGamemodeIndex = gamemodesData.indexOf(gamemode);
             displayGamemode(gamemode);
-        }else{
+        } else {
             alert("Modo de Juego no encontrado");
         }
     };
-    
+
     //mostrar los datos de los mapas
     const displayMap = (map) => {
-        if(!map){
+        if (!map) {
             console.warn("Mapa no encontrado");
             return;
         }
 
-        if(mapContainers.imageContainer){
-            mapContainers.imageContainer.innerHTML = `<img class="map-display" src="${map.displayIcon}" alt="${map.displayName}">`;
+        if (mapContainers.imageContainer) {
+            mapContainers.imageContainer.innerHTML = imageTemplate
+                .replace('{className}', 'map-display')
+                .replace('{src}', map.splash || images.img404)
+                .replace('{altText}', map.displayName);
         }
 
-        if(mapContainers.nameDisplay){
-            mapContainers.nameDisplay.textContent = map.displayName;
+        if (mapContainers.nameDisplay) {
+            mapContainers.nameDisplay.innerHTML = map.displayName;
         }
 
-        if(mapContainers.description){
-            mapContainers.description.textContent = map.narrativeDescription || map.tacticalDescription || "Sin descripción";
+        if (mapContainers.description) {
+            mapContainers.description.innerHTML = map.narrativeDescription || map.tacticalDescription || "Sin descripción";
         }
 
-        if(mapContainers.coordinates){
-            mapContainers.coordinates.textContent = map.coordinates || "N/A"
+        if (mapContainers.coordinates) {
+            mapContainers.coordinates.innerHTML = map.coordinates || "N/A"
         }
     };
 
     const searchMap = (mapName) => {
-        if (!mapName){
+        if (!mapName) {
             alert("Por favor ingresa el nombre de un mapa");
             return;
         }
 
         const map = mapsData.find(m => m.displayName.toLowerCase().includes(mapName.toLowerCase()));
 
-        if (map){
+        if (map) {
             currentMapIndex = mapsData.indexOf(map);
             displayMap(map);
-        }else{
+        } else {
             alert("Mapa no encontrado");
         }
     };
 
     //mostrar datos de las armas
+    processWeaponStats = (weapon) => {
+        const stats = weapon.weaponStats;
+        if (!stats) return "Sin estadísticas";
+
+        if (stats.fireRate) {
+            weaponContainers.fireRate.textContent = stats.fireRate || "N/A";
+        }
+
+        if (stats.reloadTime) {
+            weaponContainers.reloadTime.textContent = stats.reloadTime || "N/A";
+        }
+
+        if (stats.penetration) {
+            weaponContainers.penetration.textContent = stats.wallPenetration || "N/A";
+        }
+        const damageRanges = stats.damageRanges?.[0];
+        if (damageRanges) {
+            if (weaponContainers.headDamage) {
+                weaponContainers.headDamage.textContent = damageRanges.headDamage || "N/A";
+            }
+
+            if (weaponContainers.bodyDamage) {
+                weaponContainers.bodyDamage.textContent = damageRanges.bodyDamage || "N/A";
+            }
+
+            if (weaponContainers.legDamage) {
+                weaponContainers.legDamage.textContent = damageRanges.legDamage || "N/A";
+            }
+        }
+    };
+
     const displayWeapon = (weapon) => {
-        if(!weapon){
+        if (!weapon) {
             console.warn("Arma no encontrada");
             return;
         }
 
         if(weaponContainers.imageContainer){
-            weaponContainers.imageContainer.innerHTML = `<img class="weapon-display" src="${weapon.displayIcon}" alt="${weapon.displayName}">`;
+            weaponContainers.imageContainer.innerHTML = imageTemplate
+                .replace('{className}', 'weapon-display')
+                .replace('{src}', weapon.displayIcon || images.img404)
+                .replace('{altText}', weapon.displayName);
+        }
+        if (weaponContainers.nameDisplay) {
+            weaponContainers.nameDisplay.innerHTML = weapon.displayName;
         }
 
-        if(weaponContainers.nameDisplay){
-            weaponContainers.nameDisplay.textContent = weapon.displayName;
+        if (weaponContainers.category) {
+            weaponContainers.category.innerHTML = weapon.category || "Sin categoria";
         }
 
-        if(weaponContainers.category){
-            weaponContainers.category.textContent = weapon.category || "Sin categoria";
-        }
+        processWeaponStats(weapon);
 
-        const stats = weapon.weaponStats;
-        if (stats){
-            if(weaponStats.weaponfireRate){
-                weaponContainers.fireRate.textContent = stats.fireRate || "N/A";
-            }
-
-            if(weaponStats.weaponreloadTime){
-                weaponContainers.reloadTime.textContent = stats.reloadTime || "N/A";
-            }
-
-            if(weaponStats.penetration){
-                weaponContainers.penetration.textContent = stats.wallPenetration || "N/A";
-            }
-
-            const damageRanges = stats.damageRanges?.[0];
-            if(damageRanges){
-                if(weaponContainers.headDamage){
-                    weaponContainers.headDamage.textContent = damageRanges.headDamage || "N/A";
-                }
-
-                if(weaponContainers.bodyDamage){
-                    weaponContainers.bodyDamage.textContent = damageRanges.bodyDamage || "N/A";
-                }
-
-                if(weaponContainers.legDamage){
-                    weaponContainers.legDamage.textContent = damageRanges.legDamage || "N/A";
-                }
-            }
-        }
-
-        if(weaponContainers.cost){
-            weaponContainers.cost.textContent = weapon.shopData?.cost || "N/A";
+        if (weaponContainers.cost) {
+            weaponContainers.cost.innerHTML = weapon.shopData?.cost || "N/A";
         }
     };
 
     const searchWeapon = (weaponName) => {
-        if (!weaponName){
+        if (!weaponName) {
             alert("Por favor ingresa el nombre de un arma");
             return;
         }
 
         const weapon = gamemodesData.find(w => w.displayName.toLowerCase().includes(weaponName.toLowerCase()));
 
-        if (weapon){
+        if (weapon) {
             currentGamemodeIndex = gamemodesData.indexOf(weapon);
             displayGamemode(gamemode);
-        }else{
-            alert("Agente no encontrado");
+        } else {
+            alert("Arma no encontrada");
         }
     };
 }
