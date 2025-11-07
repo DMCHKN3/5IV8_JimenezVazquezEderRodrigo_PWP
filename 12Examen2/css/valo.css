@@ -15,6 +15,23 @@ body {
     padding: 20px;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+a:hover {
+    color: #B5163B;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .container-header {
     background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
     border: 3px solid #ff4655;
