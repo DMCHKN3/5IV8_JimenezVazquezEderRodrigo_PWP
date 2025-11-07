@@ -18,13 +18,13 @@
     <div class="container-main">
         <h2>Link de la documentacion de la API: <a href="https://dash.valorant-api.com" target="_blank">https://dash.valorant-api.com</a>
         </h2>
+        
         <!-- Seccion de Agentes -->
         <section name="sect-busqueda-agentes">
             <section id="agentes" class="busquedas">
                 <div class="container-busqueda">
                     <input type="text" id="agnt-name" class="glass-input" placeholder="Ingrese el nombre del agente">
-                    <button id="btn-search-agnt" class="btn-search"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
+                    <button id="btn-search-agnt" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <div class="row-elements">
                         <button class="btn" id="btn-up-agnt"><i class="fa-solid fa-caret-up"></i></button>
                     </div>
@@ -32,7 +32,6 @@
                         <button class="btn" id="btn-down-agnt"><i class="fa-solid fa-caret-down"></i></button>
                     </div>
                     <div id="agntdisplay-container" class="d-flex center-flex agntdisplay-container">
-                        <img class="agntdisplay" src="./img/valorant-logo.png" alt="Agntdisplay">
                     </div>
                 </div>
             </section>
@@ -41,24 +40,22 @@
                 <table>
                     <thead>
                         <tr>
-                            <td colspan="4">Informacion del Agente</td>
-                        </tr>
-                        <tr>
-                            <td>Rol: </td>
-                            <td>Descripcion: </td>
-                            <td>Habilidades: </td>
+                            <th>Rol</th>
+                            <th>Descripción</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="agent-info" id="agnt-role"></td>
-                            <td class="agent-info" id="agnt-description"></td>
-                            <td class="agent-info" id="agnt-abilities"></td>
+                            <td id="agnt-role"></td>
+                            <td id="agnt-description"></td>
                         </tr>
                     </tbody>
                 </table>
+                <h4>Habilidades:</h4>
+                <div id="agnt-abilities"></div>
             </section>
         </section>
+
         <!-- Seccion de Modos de Juego -->
         <section name="sect-modos-juego">
             <section id="modos-juego" class="busquedas">
@@ -74,7 +71,6 @@
                         <button class="btn" id="btn-down-gamemode"><i class="fa-solid fa-caret-down"></i></button>
                     </div>
                     <div id="gmmd-display-container" class="d-flex center-flex gmmd-display-container">
-                        <img class="gmmd-display" src="./img/valorant-logo.png" alt="Gamemode Display">
                     </div>
                 </div>
             </section>
@@ -84,27 +80,23 @@
                     <table>
                         <thead>
                             <tr>
-                                <td colspan="4">Informacion del Modo de Juego</td>
-                            </tr>
-                            <tr>
-                                <td>Nombre: </td>
-                                <td>Descripcion: </td>
-                                <td>Duracion: </td>
-                                <td>Tipo de Economia: </td>
+                                <th>Descripción</th>
+                                <th>Duración</th>
+                                <th>Tipo de Economía</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="gamemode-info" id="gamemode-name"></td>
-                                <td class="gamemode-info" id="gamemode-description"></td>
-                                <td class="gamemode-info" id="gamemode-duration"></td>
-                                <td class="gamemode-info" id="gamemode-economy-type"></td>
+                                <td id="gamemode-description"></td>
+                                <td id="gamemode-duration"></td>
+                                <td id="gamemode-economy-type"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
         </section>
+
         <!-- Seccion de Mapas -->
         <section name="sect-mapas">
             <section id="mapas" class="busquedas">
@@ -120,7 +112,6 @@
                         <button class="btn" id="btn-down-map"><i class="fa-solid fa-caret-down"></i></button>
                     </div>
                     <div id="map-display-container" class="d-flex center-flex map-display-container">
-                        <img class="map-display" src="./img/valorant-logo.png" alt="Map Display">
                     </div>
                 </div>
             </section>
@@ -130,25 +121,22 @@
                     <table>
                         <thead>
                             <tr>
-                                <td colspan="3">Informacion del Mapa</td>
-                            </tr>
-                            <tr>
-                                <td>Nombre: </td>
-                                <td>Descripcion: </td>
-                                <td>Coordenadas: </td>
+                                <th>Descripción</th>
+                                <th>Coordenadas</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="map-info" id="map-name"></td>
-                                <td class="map-info" id="map-description"></td>
-                                <td class="map-info" id="map-coordinates"></td>
+                                <td id="map-description"></td>
+                                <td id="map-coordinates"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
-            <!-- Seccion de Armas -->
+        </section>
+
+        <!-- Seccion de Armas -->
         <section name="sect-weapons">
             <section id="weapons" class="busquedas">
                 <div class="container-busqueda">
@@ -163,7 +151,6 @@
                         <button class="btn" id="btn-down-weapon"><i class="fa-solid fa-caret-down"></i></button>
                     </div>
                     <div id="weapon-display-container" class="d-flex center-flex weapon-display-container">
-                        <img class="weapon-display" src="./img/valorant-logo.png" alt="Weapon Display">
                     </div>
                 </div>
             </section>
@@ -175,27 +162,24 @@
                     <table>
                         <thead>
                             <tr>
-                                <td colspan="7">Estadisticas del arma</td>
-                            </tr>
-                            <tr>
-                                <td>Fire rate: </td>
-                                <td>Tiempo de recarga: </td>
-                                <td>Penetracion en la pared: </td>
-                                <td>Daño a la cabeza: </td>
-                                <td>Daño al pecho: </td>
-                                <td>Daño a las piernas: </td>
-                                <td>Coste: </td>
+                                <th>Cadencia de Fuego</th>
+                                <th>Tiempo de Recarga</th>
+                                <th>Penetración</th>
+                                <th>Daño Cabeza</th>
+                                <th>Daño Cuerpo</th>
+                                <th>Daño Pierna</th>
+                                <th>Costo</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="weapon-info" id="weapon-fire-rate"></td>
-                                <td class="weapon-info" id="weapon-reload-time"></td>
-                                <td class="weapon-info" id="weapon-penetration"></td>
-                                <td class="weapon-info" id="weapon-head-damage"></td>
-                                <td class="weapon-info" id="weapon-body-damage"></td>
-                                <td class="weapon-info" id="weapon-leg-damage"></td>
-                                <td class="weapon-info" id="weapon-cost"></td>
+                                <td id="weapon-fire-rate"></td>
+                                <td id="weapon-reload-time"></td>
+                                <td id="weapon-penetration"></td>
+                                <td id="weapon-head-damage"></td>
+                                <td id="weapon-body-damage"></td>
+                                <td id="weapon-leg-damage"></td>
+                                <td id="weapon-cost"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -203,6 +187,8 @@
             </section>
         </section>
     </div>
+
+    <script src="./js/api.js"></script>
 </body>
 
 </html>

@@ -243,7 +243,7 @@ const valoAPI = () => {
         if (gamemodeContainers.imageContainer) {
             gamemodeContainers.imageContainer.innerHTML = imageTemplate
                 .replace('{className}', 'gmmd-display')
-                .replace('{src}', icon)
+                .replace('{src}', gamemode.displayIcon || images.img404)
                 .replace('{altText}', gamemode.displayName);
         }
 
@@ -378,7 +378,7 @@ const valoAPI = () => {
         if (weaponContainers.penetration) {
             weaponContainers.penetration.innerHTML = stats.wallPenetration || "N/A";
         }
-        
+
         const damageRanges = stats.damageRanges?.[0];
         if (damageRanges) {
             if (weaponContainers.headDamage) {
