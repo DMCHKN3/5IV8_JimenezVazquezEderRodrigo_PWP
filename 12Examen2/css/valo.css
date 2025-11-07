@@ -1,0 +1,425 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f1923 0%, #1c2b36 50%, #0f1923 100%);
+    color: #ece8e1;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container-header {
+    background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
+    border: 3px solid #ff4655;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(255, 70, 85, 0.3);
+    animation: fadeIn 1s ease-in;
+}
+
+.container-header header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    text-align: center;
+    color: #ece8e1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.container-main {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.container-main > h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    margin-bottom: 40px;
+    color: #ff4655;
+    font-weight: 700;
+}
+
+.container-main > h2 a {
+    color: #53d9d9;
+    text-decoration: none;
+    border-bottom: 2px solid #53d9d9;
+    transition: all 0.3s ease;
+}
+
+.container-main > h2 a:hover {
+    color: #ff4655;
+    border-bottom-color: #ff4655;
+}
+
+section[name^="sect-"] {
+    background: rgba(28, 43, 54, 0.8);
+    border: 2px solid #2c3e50;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.8s ease-out;
+}
+
+
+.busquedas {
+    margin-bottom: 30px;
+}
+
+.container-busqueda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.glass-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 20px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #53d9d9;
+    border-radius: 10px;
+    color: #ece8e1;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.glass-input::placeholder {
+    color: rgba(236, 232, 225, 0.6);
+}
+
+.glass-input:focus {
+    outline: none;
+    border-color: #ff4655;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(255, 70, 85, 0.3);
+}
+
+.btn-search {
+    background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
+    color: #ece8e1;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 70, 85, 0.4);
+}
+
+.btn-search:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 70, 85, 0.6);
+    background: linear-gradient(135deg, #bd3944 0%, #ff4655 100%);
+}
+
+.btn-search:active {
+    transform: translateY(0);
+}
+
+.row-elements {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    background: rgba(83, 217, 217, 0.2);
+    color: #53d9d9;
+    border: 2px solid #53d9d9;
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover:not(:disabled) {
+    background: #53d9d9;
+    color: #0f1923;
+    transform: scale(1.1);
+}
+
+.btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.agntdisplay-container,
+.gmmd-display-container,
+.map-display-container,
+.weapon-display-container {
+    width: 100%;
+    max-width: 400px;
+    height: 350px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(15, 25, 35, 0.5);
+    border: 3px solid #ff4655;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255, 70, 85, 0.3);
+}
+
+.agntdisplay,
+.gmmd-display,
+.map-display,
+.weapon-display {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.agntdisplay:hover,
+.gmmd-display:hover,
+.map-display:hover,
+.weapon-display:hover {
+    transform: scale(1.05);
+}
+
+.agent-data,
+#gamemode-data,
+#map-data,
+#weapon-data {
+    padding: 20px;
+}
+
+.center-flex,
+.agent-data h3,
+#gamemode-data h3,
+#map-data h3,
+#weapon-data h3 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #ff4655;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(15, 25, 35, 0.6);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ece8e1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 15px;
+    border-top: 1px solid rgba(83, 217, 217, 0.2);
+    color: #ece8e1;
+    font-size: 15px;
+}
+
+tbody tr {
+    transition: background 0.3s ease;
+}
+
+tbody tr:hover {
+    background: rgba(83, 217, 217, 0.1);
+}
+
+.agent-data h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #53d9d9;
+    margin: 25px 0 15px 0;
+    font-weight: 700;
+}
+
+#agnt-abilities ul {
+    list-style: none;
+    padding: 0;
+}
+
+#agnt-abilities li {
+    background: rgba(83, 217, 217, 0.1);
+    border-left: 4px solid #53d9d9;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#agnt-abilities li:hover {
+    background: rgba(83, 217, 217, 0.2);
+    transform: translateX(5px);
+}
+
+#agnt-abilities strong {
+    color: #ff4655;
+    font-weight: 700;
+}
+
+#weapon-data > .center-flex > div {
+    background: rgba(255, 70, 85, 0.1);
+    border: 2px solid #ff4655;
+    padding: 12px 20px;
+    margin: 10px auto;
+    border-radius: 8px;
+    max-width: 500px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#weapon-data span {
+    color: #53d9d9;
+    font-weight: 700;
+}
+
+.d-flex {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container-header header h2 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .container-main > h2 {
+        font-size: 18px;
+    }
+
+    section[name^="sect-"] {
+        padding: 20px;
+    }
+
+    .glass-input {
+        font-size: 14px;
+    }
+
+    .agntdisplay-container,
+    .gmmd-display-container,
+    .map-display-container,
+    .weapon-display-container {
+        max-width: 300px;
+        height: 250px;
+    }
+
+    .center-flex,
+    .agent-data h3,
+    #gamemode-data h3,
+    #map-data h3,
+    #weapon-data h3 {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container-header {
+        padding: 20px;
+    }
+
+    .container-header header h2 {
+        font-size: 16px;
+    }
+
+    .agntdisplay-container,
+    .gmmd-display-container,
+    .map-display-container,
+    .weapon-display-container {
+        max-width: 250px;
+        height: 200px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 20px;
+    }
+
+    .btn-search {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f1923;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #bd3944 0%, #ff4655 100%);
+}
