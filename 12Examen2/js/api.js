@@ -388,4 +388,184 @@ const valoAPI = () => {
             alert("Arma no encontrada");
         }
     };
-}
+
+    //validacion de botones
+
+    const checkDisabledAgents = () => {
+        if (agentButtons.down) {
+            agentButtons.down.disabled = currentAgentIndex <= 0;
+        }
+        if (agentButtons.up) {
+            agentButtons.up.disabled = currentAgentIndex >= agentsData.length - 1;
+        }
+    };
+
+    const checkDisabledGamemodes = () => {
+        if (gamemodeButtons.down) {
+            gamemodeButtons.down.disabled = currentGamemodeIndex <= 0;
+        }
+        if (gamemodeButtons.up) {
+            gamemodeButtons.up.disabled = currentGamemodeIndex >= gamemodesData.length - 1;
+        }
+    };
+
+    const checkDisabledMaps = () => {
+        if (mapButtons.down) {
+            mapButtons.down.disabled = currentMapIndex <= 0;
+        }
+        if (mapButtons.up) {
+            mapButtons.up.disabled = currentMapIndex >= mapsData.length - 1;
+        }
+    };
+
+    const checkDisabledWeapons = () => {
+        if (weaponButtons.down) {
+            weaponButtons.down.disabled = currentWeaponIndex <= 0;
+        }
+        if (weaponButtons.up) {
+            weaponButtons.up.disabled = currentWeaponIndex >= weaponsData.length - 1;
+        }
+    };
+
+    //trigers para hacer el search
+
+    const trigger = () => {
+        //trigger de agentes
+        if (agentButtons.search){
+            agentButtons.search.onclick = () => setAgentData(agentInput?.value);
+        }
+        if(agentInput){
+            agentInput.onkeyup = (event) => {
+                event.preventDefault();
+                if (event.key === "Enter") {
+                    setAgentData(agentInput.value);
+                }
+            };
+        }
+        if (agentButtons.up){
+            agentButtons.up.onclick = () => {
+                if (currentAgentIndex < agentsData.length - 1) {
+                    setAgentData(currentAgentIndex + 1);
+                    checkDisabledAgents();
+                }
+            };
+        }
+        if (agentButtons.down){
+            agentButtons.down.onclick = () => {
+                if (currentAgentIndex > 0) {
+                    setAgentData(currentAgentIndex - 1);
+                    checkDisabledAgents();
+                }
+            };
+        }
+
+        //trigger de modos de juego
+        if (gamemodeButtons.search){
+            gamemodeButtons.search.onclick = () => setGamemodeData(gamemodeInput?.value);
+        }
+        if(gamemodeInput){
+            gamemodeInput.onkeyup = (event) => {
+                event.preventDefault();
+                if (event.key === "Enter") {
+                    setGamemodeData(gamemodeInput.value);
+                }
+            };
+        }
+        if (gamemodeButtons.up){
+            gamemodeButtons.up.onclick = () => {
+                if (currentGamemodeIndex < gamemodesData.length - 1) {
+                    setGamemodeData(currentGamemodeIndex + 1);
+                    checkDisabledGamemodes();
+                }
+            };
+        }
+        if (gamemodeButtons.down){
+            gamemodeButtons.down.onclick = () => {
+                if (currentGamemodeIndex > 0) {
+                    setGamemodeData(currentGamemodeIndex - 1);
+                    checkDisabledGamemodes();
+                }
+            };
+        }
+
+        //trigger de mapas
+        if (mapButtons.search){
+            mapButtons.search.onclick = () => setMapData(mapInput.value);
+        }
+        if(mapInput){
+            mapInput.onkeyup = (event) => {
+                event.preventDefault();
+                if (event.key === "Enter") {
+                    setMapData(mapInput.value);
+                }
+            };
+        }
+        if (mapButtons.up){
+            mapButtons.up.onclick = () => {
+                if (currentMapIndex < mapsData.length - 1) {
+                    setMapData(currentMapIndex + 1);
+                    checkDisabledMaps();
+                }
+            };
+        }
+        if (mapButtons.down){
+            mapButtons.down.onclick = () => {
+                if (currentMapIndex > 0) {
+                    setMapData(currentMapIndex - 1);
+                    checkDisabledMaps();
+                }
+            };
+        }
+
+        //trigger de armas
+        if (weaponButtons.search){
+            weaponButtons.search.onclick = () => setWeaponData(weaponInput.value);
+        }
+        if(weaponInput){
+            weaponInput.onkeyup = (event) => {
+                event.preventDefault();
+                if (event.key === "Enter") {
+                    setWeaponData(weaponInput.value);
+                }
+            };
+        }
+        if (weaponButtons.up){
+            weaponButtons.up.onclick = () => {
+                if (currentWeaponIndex < weaponsData.length - 1) {
+                    setWeaponData(currentWeaponIndex + 1);
+                    checkDisabledWeapons();
+                }
+            };
+        }
+        if (weaponButtons.down){
+            weaponButtons.down.onclick = () => {
+                if (currentWeaponIndex > 0) {
+                    setWeaponData(currentWeaponIndex - 1);
+                    checkDisabledWeapons();
+                }
+            };
+        }
+    };
+
+    //inicializacion
+
+    const init = async () => {
+        console.log("Iniciando Valorant API...");
+
+        await Promise.all([
+            getAgents(),
+            getGamemodes(),
+            getMaps(),
+            getWeapons()
+        ]);
+
+        console.log("Valorant API iniciada correctamente.");
+
+        trigger();
+
+    };
+    init();
+
+};
+
+window.onload = valoAPI;
