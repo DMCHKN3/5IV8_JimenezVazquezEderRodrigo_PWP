@@ -26,14 +26,13 @@ const valoAPI = () => {
         nameContainer: document.getElementById("map-name-display"),
         name: document.getElementById("map-name"),
         description: document.getElementById("map-description"),
-        location: document.getElementById("map-location"),
         coordinates: document.getElementById("map-coordinates")
     };
 
     const weaponContainers = {
         imageContainer: document.getElementById("weapon-display-container"),
         nameContainer: document.getElementById("weapon-name-display"),
-        name: document.getElementById("weapon-name-display"),
+        name: document.getElementById("display-weapon-name"),
         category: document.getElementById("display-weapon-category"),
         fireRate: document.getElementById("weapon-fire-rate"),
         reloadTime: document.getElementById("weapon-reload-time"),
@@ -172,7 +171,7 @@ const valoAPI = () => {
     const processAgentAbilities = (agent) => {
         let abilitiesHTML = "<ul style='list-style-type: none; padding: 0;'>";
         agent.abilities?.forEach(ability => {
-            abilitiesHTML += `<li>${ability.displayName}: ${ability.description}</li>`;
+            abilitiesHTML += `<li><strong>${ability.displayName}:</strong> ${ability.description}</li>`;
         });
         abilitiesHTML += "</ul>";
         return abilitiesHTML;
@@ -186,13 +185,13 @@ const valoAPI = () => {
 
         if (agentContainers.imageContainer) {
             agentContainers.imageContainer.innerHTML = imageTemplate
-                .replace('{className}', 'agnt-display')
+                .replace('{className}', 'agntdisplay')
                 .replace('{src}', agent.displayIcon || images.img404)
                 .replace('{altText}', agent.displayName);
         }
 
-        if (agentContainers.nameDisplay) {
-            agentContainers.nameDisplay.innerHTML = agent.displayName;
+        if (agentContainers.nameContainer) {
+            agentContainers.nameContainer.innerHTML = agent.displayName;
         }
 
         if (agentContainers.role) {
@@ -208,17 +207,27 @@ const valoAPI = () => {
         }
     };
 
-    const searchAgent = (agentName) => {
-        if (!agentName) {
+    const setAgentData = (agentIdentifier) => {
+        if (!agentIdentifier && agentIdentifier !== 0) {
             alert("Por favor ingresa el nombre de un agente");
             return;
         }
 
-        const agent = agentsData.find(a => a.displayName.toLowerCase().includes(agentName.toLowerCase()));
+        const query = (typeof agentIdentifier === "string") 
+            ? agentIdentifier.toLowerCase().trim() 
+            : agentIdentifier;
+
+        let agent;
+        if (typeof query === "string") {
+            agent = agentsData.find(a => a.displayName.toLowerCase().includes(query));
+        } else {
+            agent = agentsData[query];
+        }
 
         if (agent) {
             currentAgentIndex = agentsData.indexOf(agent);
             displayAgent(agent);
+            checkDisabledAgents();
         } else {
             alert("Agente no encontrado");
         }
@@ -238,8 +247,12 @@ const valoAPI = () => {
                 .replace('{altText}', gamemode.displayName);
         }
 
-        if (gamemodeContainers.nameDisplay) {
-            gamemodeContainers.nameDisplay.innerHTML = gamemode.displayName;
+        if (gamemodeContainers.nameContainer) {
+            gamemodeContainers.nameContainer.innerHTML = gamemode.displayName;
+        }
+
+        if (gamemodeContainers.name) {
+            gamemodeContainers.name.innerHTML = gamemode.displayName;
         }
 
         if (gamemodeContainers.description) {
@@ -255,17 +268,27 @@ const valoAPI = () => {
         }
     };
 
-    const setGamemodeData = (gamemodeName) => {
-        if (!gamemodeName) {
+    const setGamemodeData = (gamemodeIdentifier) => {
+        if (!gamemodeIdentifier && gamemodeIdentifier !== 0) {
             alert("Por favor ingresa el nombre de un modo de juego");
             return;
         }
 
-        const gamemode = gamemodesData.find(g => g.displayName.toLowerCase().includes(gamemodeName.toLowerCase()));
+        const query = (typeof gamemodeIdentifier === "string") 
+            ? gamemodeIdentifier.toLowerCase().trim() 
+            : gamemodeIdentifier;
+
+        let gamemode;
+        if (typeof query === "string") {
+            gamemode = gamemodesData.find(g => g.displayName.toLowerCase().includes(query));
+        } else {
+            gamemode = gamemodesData[query];
+        }
 
         if (gamemode) {
             currentGamemodeIndex = gamemodesData.indexOf(gamemode);
             displayGamemode(gamemode);
+            checkDisabledGamemodes();
         } else {
             alert("Modo de Juego no encontrado");
         }
@@ -285,12 +308,17 @@ const valoAPI = () => {
                 .replace('{altText}', map.displayName);
         }
 
-        if (mapContainers.nameDisplay) {
-            mapContainers.nameDisplay.innerHTML = map.displayName;
+        if (mapContainers.nameContainer) {
+            mapContainers.nameContainer.innerHTML = map.displayName;
+        }
+
+        if (mapContainers.name) {
+            mapContainers.name.innerHTML = map.displayName;
         }
 
         if (mapContainers.description) {
-            mapContainers.description.innerHTML = map.narrativeDescription || map.tacticalDescription || "Sin descripción";
+            const description = map.narrativeDescription || map.tacticalDescription || "Sin descripción";
+            mapContainers.description.innerHTML = description;
         }
 
         if (mapContainers.coordinates) {
@@ -298,50 +326,71 @@ const valoAPI = () => {
         }
     };
 
-    const searchMap = (mapName) => {
-        if (!mapName) {
+    const setMapData = (mapIdentifier) => {
+        if (!mapIdentifier && mapIdentifier !== 0) {
             alert("Por favor ingresa el nombre de un mapa");
             return;
         }
 
-        const map = mapsData.find(m => m.displayName.toLowerCase().includes(mapName.toLowerCase()));
+        const query = (typeof mapIdentifier === "string") 
+            ? mapIdentifier.toLowerCase().trim() 
+            : mapIdentifier;
+
+        let map;
+        if (typeof query === "string") {
+            map = mapsData.find(m => m.displayName.toLowerCase().includes(query));
+        } else {
+            map = mapsData[query];
+        }
 
         if (map) {
             currentMapIndex = mapsData.indexOf(map);
             displayMap(map);
+            checkDisabledMaps();
         } else {
             alert("Mapa no encontrado");
         }
     };
 
     //mostrar datos de las armas
-    processWeaponStats = (weapon) => {
+    const processWeaponStats = (weapon) => {
         const stats = weapon.weaponStats;
-        if (!stats) return "Sin estadísticas";
-
-        if (stats.fireRate) {
-            weaponContainers.fireRate.textContent = stats.fireRate || "N/A";
+        if (!stats) {
+            if (weaponContainers.fireRate) weaponContainers.fireRate.innerHTML = "N/A";
+            if (weaponContainers.reloadTime) weaponContainers.reloadTime.innerHTML = "N/A";
+            if (weaponContainers.penetration) weaponContainers.penetration.innerHTML = "N/A";
+            if (weaponContainers.headDamage) weaponContainers.headDamage.innerHTML = "N/A";
+            if (weaponContainers.bodyDamage) weaponContainers.bodyDamage.innerHTML = "N/A";
+            if (weaponContainers.legDamage) weaponContainers.legDamage.innerHTML = "N/A";
+            return;
         }
 
-        if (stats.reloadTime) {
-            weaponContainers.reloadTime.textContent = stats.reloadTime || "N/A";
+        if (weaponContainers.fireRate) {
+            weaponContainers.fireRate.innerHTML = stats.fireRate || "N/A";
         }
 
-        if (stats.penetration) {
-            weaponContainers.penetration.textContent = stats.wallPenetration || "N/A";
+        if (weaponContainers.reloadTime) {
+            weaponContainers.reloadTime.innerHTML = stats.reloadTimeSeconds 
+                ? stats.reloadTimeSeconds + "s" 
+                : "N/A";
         }
+
+        if (weaponContainers.penetration) {
+            weaponContainers.penetration.innerHTML = stats.wallPenetration || "N/A";
+        }
+        
         const damageRanges = stats.damageRanges?.[0];
         if (damageRanges) {
             if (weaponContainers.headDamage) {
-                weaponContainers.headDamage.textContent = damageRanges.headDamage || "N/A";
+                weaponContainers.headDamage.innerHTML = damageRanges.headDamage || "N/A";
             }
 
             if (weaponContainers.bodyDamage) {
-                weaponContainers.bodyDamage.textContent = damageRanges.bodyDamage || "N/A";
+                weaponContainers.bodyDamage.innerHTML = damageRanges.bodyDamage || "N/A";
             }
 
             if (weaponContainers.legDamage) {
-                weaponContainers.legDamage.textContent = damageRanges.legDamage || "N/A";
+                weaponContainers.legDamage.innerHTML = damageRanges.legDamage || "N/A";
             }
         }
     };
@@ -358,8 +407,13 @@ const valoAPI = () => {
                 .replace('{src}', weapon.displayIcon || images.img404)
                 .replace('{altText}', weapon.displayName);
         }
-        if (weaponContainers.nameDisplay) {
-            weaponContainers.nameDisplay.innerHTML = weapon.displayName;
+
+        if (weaponContainers.nameContainer) {
+            weaponContainers.nameContainer.innerHTML = weapon.displayName;
+        }
+
+        if (weaponContainers.name) {
+            weaponContainers.name.innerHTML = weapon.displayName;
         }
 
         if (weaponContainers.category) {
@@ -373,17 +427,27 @@ const valoAPI = () => {
         }
     };
 
-    const searchWeapon = (weaponName) => {
-        if (!weaponName) {
+    const setWeaponData = (weaponIdentifier) => {
+        if (!weaponIdentifier && weaponIdentifier !== 0) {
             alert("Por favor ingresa el nombre de un arma");
             return;
         }
 
-        const weapon = gamemodesData.find(w => w.displayName.toLowerCase().includes(weaponName.toLowerCase()));
+        const query = (typeof weaponIdentifier === "string") 
+            ? weaponIdentifier.toLowerCase().trim() 
+            : weaponIdentifier;
+
+        let weapon;
+        if (typeof query === "string") {
+            weapon = weaponsData.find(w => w.displayName.toLowerCase().includes(query));
+        } else {
+            weapon = weaponsData[query];
+        }
 
         if (weapon) {
-            currentGamemodeIndex = gamemodesData.indexOf(weapon);
-            displayGamemode(gamemode);
+            currentWeaponIndex = weaponsData.indexOf(weapon);
+            displayWeapon(weapon);
+            checkDisabledWeapons();
         } else {
             alert("Arma no encontrada");
         }
@@ -446,7 +510,6 @@ const valoAPI = () => {
             agentButtons.up.onclick = () => {
                 if (currentAgentIndex < agentsData.length - 1) {
                     setAgentData(currentAgentIndex + 1);
-                    checkDisabledAgents();
                 }
             };
         }
@@ -454,7 +517,6 @@ const valoAPI = () => {
             agentButtons.down.onclick = () => {
                 if (currentAgentIndex > 0) {
                     setAgentData(currentAgentIndex - 1);
-                    checkDisabledAgents();
                 }
             };
         }
@@ -475,7 +537,6 @@ const valoAPI = () => {
             gamemodeButtons.up.onclick = () => {
                 if (currentGamemodeIndex < gamemodesData.length - 1) {
                     setGamemodeData(currentGamemodeIndex + 1);
-                    checkDisabledGamemodes();
                 }
             };
         }
@@ -483,14 +544,13 @@ const valoAPI = () => {
             gamemodeButtons.down.onclick = () => {
                 if (currentGamemodeIndex > 0) {
                     setGamemodeData(currentGamemodeIndex - 1);
-                    checkDisabledGamemodes();
                 }
             };
         }
 
         //trigger de mapas
         if (mapButtons.search){
-            mapButtons.search.onclick = () => setMapData(mapInput.value);
+            mapButtons.search.onclick = () => setMapData(mapInput?.value);
         }
         if(mapInput){
             mapInput.onkeyup = (event) => {
@@ -504,7 +564,6 @@ const valoAPI = () => {
             mapButtons.up.onclick = () => {
                 if (currentMapIndex < mapsData.length - 1) {
                     setMapData(currentMapIndex + 1);
-                    checkDisabledMaps();
                 }
             };
         }
@@ -512,14 +571,13 @@ const valoAPI = () => {
             mapButtons.down.onclick = () => {
                 if (currentMapIndex > 0) {
                     setMapData(currentMapIndex - 1);
-                    checkDisabledMaps();
                 }
             };
         }
 
         //trigger de armas
         if (weaponButtons.search){
-            weaponButtons.search.onclick = () => setWeaponData(weaponInput.value);
+            weaponButtons.search.onclick = () => setWeaponData(weaponInput?.value);
         }
         if(weaponInput){
             weaponInput.onkeyup = (event) => {
@@ -533,7 +591,6 @@ const valoAPI = () => {
             weaponButtons.up.onclick = () => {
                 if (currentWeaponIndex < weaponsData.length - 1) {
                     setWeaponData(currentWeaponIndex + 1);
-                    checkDisabledWeapons();
                 }
             };
         }
@@ -541,7 +598,6 @@ const valoAPI = () => {
             weaponButtons.down.onclick = () => {
                 if (currentWeaponIndex > 0) {
                     setWeaponData(currentWeaponIndex - 1);
-                    checkDisabledWeapons();
                 }
             };
         }
@@ -559,13 +615,33 @@ const valoAPI = () => {
             getWeapons()
         ]);
 
-        console.log("Valorant API iniciada correctamente.");
+        console.log("Datos cargados exitosamente");
+
+        // Mostrar primer elemento de cada categoría
+        if (agentsData.length > 0) {
+            displayAgent(agentsData[0]);
+            checkDisabledAgents();
+        }
+
+        if (gamemodesData.length > 0) {
+            displayGamemode(gamemodesData[0]);
+            checkDisabledGamemodes();
+        }
+
+        if (mapsData.length > 0) {
+            displayMap(mapsData[0]);
+            checkDisabledMaps();
+        }
+
+        if (weaponsData.length > 0) {
+            displayWeapon(weaponsData[0]);
+            checkDisabledWeapons();
+        }
 
         trigger();
-
     };
+    
     init();
-
 };
 
 window.onload = valoAPI;
