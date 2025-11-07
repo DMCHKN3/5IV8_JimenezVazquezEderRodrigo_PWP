@@ -1,7 +1,7 @@
-const agentsURL = "https://valorant-api.com/v1/agents";
-const mapsURL = "https://valorant-api.com/v1/maps";
-const weaponsURL = "https://valorant-api.com/v1/weapons";
-const gamemodesURL = "https://valorant-api.com/v1/gamemodes";
+const agentsURL = "https://valorant-api.com/v1/agents?language=es-MX";
+const mapsURL = "https://valorant-api.com/v1/maps?language=es-MX";
+const weaponsURL = "https://valorant-api.com/v1/weapons?language=es-MX";
+const gamemodesURL = "https://valorant-api.com/v1/gamemodes?language=es-MX";
 
 const valoAPI = () => {
     const agentContainers = {
