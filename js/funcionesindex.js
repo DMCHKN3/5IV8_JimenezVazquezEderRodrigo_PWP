@@ -5,8 +5,10 @@ const actividades = [
     { nombre: "04Formulario", link: "./04Formulario/formulario.html", descripcion: "Creacion del formulario"},
     { nombre: "05Ejercicios", link: "./05 Ejercicios/ejerciciosm.html", descripcion: "Ejercicios de JS"},
     { nombre: "06Algoritmia", link: "./06Algoritmia/algoritmia.html", descripcion: "Ejercicios de JS de Algoritmia"},
-    { nombre: "07JS Intermedio", link: "./07JSIntermedio/funcionesintermedio.js", descripcion: "Apunte en un archivo JS"},
+    { nombre: "07JS Intermedio", link: "./07 JSIntermedio/jsintermedio.html", descripcion: "Apunte en un archivo JS"},
     { nombre: "08Rompecabezas", link: "./08Rompecabezas/rompecabezas.html", descripcion: "Rompecabezas con JS (en clase)"},
+    { nombre: "09Node", link: "./09Node/node.html", descripcion: "Practica de Node.js y servidor local"},
+    { nombre: "10Postman", link: "./10Postman/imgsPostman.html", descripcion: "Capturas de pantalla de la practica de postman"},
     { nombre: "Ejercicios Parte 2", link: "./Ejercicios_Part2/MainEjercicios.html", descripcion: "Tarea de Ejercicios Parte 2"},
     { nombre: "11 API Fetch", link: "./11 API Fetch/api.html", descripcion: "se trabaja con API y Fetch para hacer una pokedex"},
     { nombre: "12 Examen2", link: "./12Examen2/examen.html", descripcion: "Es el uso de la API que escogimos para el examen de 2o parcial"}
