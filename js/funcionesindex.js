@@ -11,7 +11,8 @@ const actividades = [
     { nombre: "10Postman", link: "./10Postman/imgsPostman.html", descripcion: "Capturas de pantalla de la practica de postman"},
     { nombre: "Ejercicios Parte 2", link: "./Ejercicios_Part2/MainEjercicios.html", descripcion: "Tarea de Ejercicios Parte 2"},
     { nombre: "11 API Fetch", link: "./11 API Fetch/api.html", descripcion: "se trabaja con API y Fetch para hacer una pokedex"},
-    { nombre: "12 Examen2", link: "./12Examen2/examen.html", descripcion: "Es el uso de la API que escogimos para el examen de 2o parcial"}
+    { nombre: "12 Examen2", link: "./12Examen2/examen.html", descripcion: "Es el uso de la API que escogimos para el examen de 2o parcial"},
+    { nombre: "13 Prueba extra", link: "./13 Ejerciciof 2o par/imagen_prueba.html", descripcion: "Prueba extra de JS" }
 
 ];
 
