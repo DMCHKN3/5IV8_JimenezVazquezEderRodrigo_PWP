@@ -19,7 +19,6 @@ const bd = mysql.createConnection({
     password: 'n0m3l0',
     database: 'estudiantescecyt'
 });
-
 bd.connect((error) => {
     if (error) {
         console.log('Error de conexion a la base de datos: ' + error);
