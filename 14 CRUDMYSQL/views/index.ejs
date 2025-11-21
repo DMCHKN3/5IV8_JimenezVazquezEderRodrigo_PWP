@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Estudiantes</title>
+    <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
     <h1>Registro de Estudiantes</h1>
@@ -18,12 +19,12 @@
     </form>
 
     <ul>
-        <% estudiantes.forEach(function(estudiante) => { %>
+        <% estudiantes.forEach(function(estudiante){ %>
             <li><strong><%= estudiante.nombre %></strong> (Edad: <%= estudiante.edad %>, Curso: <%= estudiante.curso %>)
             <a href="/estudiantes/edit/<%= estudiante.id %>">Editar</a>
             <a href="/estudiantes/delete/<%= estudiante.id %>">Eliminar</a>
             </li>
-        <% }) %>
+        <% }); %>
     </ul>
     
 </body>
