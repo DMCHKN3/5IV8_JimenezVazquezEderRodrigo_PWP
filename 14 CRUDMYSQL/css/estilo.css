@@ -274,3 +274,111 @@ hr {
     border: 2px solid #F2A5C0;
     border-radius: 5px;
 }
+
+/* Estilos específicos para la página de edición */
+/* Botón de actualizar con color diferente usando la paleta existente */
+form[action*="/update/"] button[type="submit"] {
+    background: #F2A5C0;
+    color: #B5163B;
+    border: 2px solid #B5163B;
+}
+
+form[action*="/update/"] button[type="submit"]:hover {
+    background: #B5163B;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(181, 22, 59, 0.4);
+}
+
+/* Botón para volver al inicio */
+.btn-volver {
+    display: inline-block;
+    background-color: #F2A5C0;
+    color: #B5163B;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid #B5163B;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Zain", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.btn-volver:hover {
+    background-color: #B5163B;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(181, 22, 59, 0.4);
+}
+
+/* Contenedor centrado para el botón */
+.center-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+    
+    form, ul {
+        padding: 1.5rem;
+    }
+    
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    ul li a {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    form input[type="text"],
+    form input[type="number"] {
+        font-size: 16px;
+    }
+}
+
+/* Estilos para el footer */
+.container-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+.container-footer footer a {
+    background-color: #F2A5C0;
+    color: #B5163B;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid #B5163B;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Zain", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.container-footer footer a:hover {
+    background-color: #B5163B;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(181, 22, 59, 0.4);
+}
