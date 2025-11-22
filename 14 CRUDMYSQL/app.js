@@ -50,9 +50,9 @@ app.get('/', (req, res)=>{
         if(error){
             console.log('Error al obtener los estudiantes: ' + error);
             res.status(500).send('Error al obtener los estudiantes');
+        } else {
+            res.render('index', { estudiantes: resultados });
         }
-        res.render('index', { estudiantes: resultados });
-        
     });
 });
 
@@ -65,8 +65,9 @@ app.post('/estudiantes', (req, res) => {
         if (error) {
             console.log('Error al crear el estudiante: ' + error);
             res.status(500).send('Error al crear el estudiante');
+        } else {
+            res.redirect('/');
         }
-        res.redirect('/');
     });
 });
 
@@ -80,8 +81,9 @@ app.get('/estudiantes/delete/:id', (req, res) => {
         if (error) {
             console.log('Error al eliminar el estudiante: ' + error);
             res.status(500).send('Error al eliminar el estudiante');
+        } else {
+            res.redirect('/');
         }
-        res.redirect('/');
     });
 });
 
@@ -93,8 +95,9 @@ app.get('/estudiantes/edit/:id', (req, res) => {
         if (error) {
             console.log('Error al obtener el estudiante: ' + error);
             res.status(500).send('Error al obtener el estudiante');
+        } else {
+            res.render('edit', { estudiante: resultados[0] });
         }
-        res.render('edit', { estudiante: resultados[0] });
     });
 });
 
@@ -106,8 +109,9 @@ app.post('/estudiantes/update/:id', (req, res) => {
         if (error) {
             console.log('Error al actualizar el estudiante: ' + error);
             res.status(500).send('Error al actualizar el estudiante');
+        } else {
+            res.redirect('/');
         }
-        res.redirect('/');
     });
 });
 

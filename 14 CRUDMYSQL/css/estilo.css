@@ -1,6 +1,6 @@
 html,
 body {
-    background: linear-gradient(135deg, #E14B72 0%, #F2A5C0 100%);
+    background-color: #E14B72;
     min-height: 100vh;
     margin: 0;
     padding: 20px;
@@ -15,19 +15,16 @@ body {
 
 h1 {
     font-family: "Lexend", sans-serif;
-    font-size: 2.5rem;
-    background: linear-gradient(45deg, #F2A5C0, #E14B72);
-    color: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(177, 22, 59, 0.3);
+    font-size: 35px;
+    background-color: #F2A5C0;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
     margin-bottom: 2rem;
-    border: 2px solid #B5163B;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    border: 2px solid black;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 2rem;
 }
 
 h2{
@@ -47,27 +44,22 @@ p, a, td, th{
 
 /* Formulario */
 form {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
+    background-color: #F2A5C0;
+    padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(181, 22, 59, 0.2);
     margin-bottom: 2rem;
-    border: 2px solid #F2A5C0;
+    border: 2px solid black;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
     text-align: left;
 }
 
 form label {
     font-weight: bold;
-    color: #B5163B;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    color: black;
+    font-size: 20px;
+    margin-bottom: 5px;
     display: block;
     text-align: left;
 }
@@ -75,54 +67,46 @@ form label {
 form input[type="text"],
 form input[type="number"] {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #F2A5C0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background: #fafafa;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    background: white;
     font-family: "Zain", sans-serif;
 }
 
 form input[type="text"]:focus,
 form input[type="number"]:focus {
     outline: none;
-    border-color: #E14B72;
-    box-shadow: 0 0 10px rgba(225, 75, 114, 0.3);
-    background: white;
+    border-color: #B5163B;
 }
 
 form button[type="submit"] {
-    background: linear-gradient(45deg, #E14B72, #B5163B);
+    background-color: #B5163B;
     color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
+    padding: 12px 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(181, 22, 59, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     font-family: "Zain", sans-serif;
-    align-self: center;
-    width: fit-content;
+    display: block;
+    margin: 0 auto;
 }
 
 form button[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(181, 22, 59, 0.4);
-    background: linear-gradient(45deg, #B5163B, #E14B72);
+    background-color: #E14B72;
+    color: white;
 }
 
 /* Lista de estudiantes */
 ul {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
+    background-color: #F2A5C0;
+    padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(181, 22, 59, 0.2);
-    border: 2px solid #F2A5C0;
+    border: 2px solid black;
     max-width: 800px;
     margin: 0 auto;
     list-style: none;
@@ -130,30 +114,21 @@ ul {
 
 ul li {
     background: white;
-    margin-bottom: 1rem;
-    padding: 1.5rem;
+    margin-bottom: 10px;
+    padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(181, 22, 59, 0.1);
-    border-left: 4px solid #E14B72;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    border: 2px solid black;
+    font-size: 20px;
     text-align: left;
 }
 
 ul li:hover {
-    transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(181, 22, 59, 0.2);
     background: #fdf2f6;
 }
 
 ul li strong {
     color: #B5163B;
-    font-size: 1.2rem;
+    font-size: 22px;
 }
 
 a {
@@ -162,41 +137,35 @@ a {
 
 /* Enlaces de acción en la lista */
 ul li a {
-    background: linear-gradient(45deg, #E14B72, #B5163B);
-    color: white !important;
+    background-color: #B5163B;
+    color: white;
     padding: 8px 15px;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 16px;
     font-weight: bold;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     margin-left: 8px;
 }
 
 ul li a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(181, 22, 59, 0.3);
-    background: linear-gradient(45deg, #B5163B, #E14B72);
-    color: white !important;
-    font-weight: bold;
+    background-color: #E14B72;
+    color: white;
 }
 
 ul li a:first-of-type {
-    background: linear-gradient(45deg, #28a745, #20c997);
+    background-color: #28a745;
 }
 
 ul li a:first-of-type:hover {
-    background: linear-gradient(45deg, #20c997, #28a745);
+    background-color: #20c997;
 }
 
 ul li a:last-of-type {
-    background: linear-gradient(45deg, #dc3545, #c82333);
+    background-color: #dc3545;
 }
 
 ul li a:last-of-type:hover {
-    background: linear-gradient(45deg, #c82333, #dc3545);
+    background-color: #c82333;
 }
 
 .container-header {
@@ -275,44 +244,23 @@ hr {
     border-radius: 5px;
 }
 
-/* Estilos específicos para la página de edición */
-/* Botón de actualizar con color diferente usando la paleta existente */
-form[action*="/update/"] button[type="submit"] {
-    background: #F2A5C0;
-    color: #B5163B;
-    border: 2px solid #B5163B;
-}
-
-form[action*="/update/"] button[type="submit"]:hover {
-    background: #B5163B;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(181, 22, 59, 0.4);
-}
-
 /* Botón para volver al inicio */
 .btn-volver {
     display: inline-block;
     background-color: #F2A5C0;
-    color: #B5163B;
+    color: black;
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 10px;
-    border: 2px solid #B5163B;
+    border: 2px solid black;
     font-weight: bold;
     font-size: 20px;
     font-family: "Zain", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    margin-top: 2rem;
 }
 
 .btn-volver:hover {
     background-color: #B5163B;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(181, 22, 59, 0.4);
 }
 
 /* Contenedor centrado para el botón */
@@ -362,23 +310,18 @@ form[action*="/update/"] button[type="submit"]:hover {
 
 .container-footer footer a {
     background-color: #F2A5C0;
-    color: #B5163B;
+    color: black;
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 10px;
-    border: 2px solid #B5163B;
+    border: 2px solid black;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     font-family: "Zain", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
     display: inline-block;
 }
 
 .container-footer footer a:hover {
     background-color: #B5163B;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(181, 22, 59, 0.4);
 }
