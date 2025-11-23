@@ -39,7 +39,7 @@ app.use(express.static(__dirname + '/css'));
 
 //ruta get para mostrar el formulario y la lista de la bitacora
 app.get('/', (req, res) => {
-    const querry = 'SELECT * FROM bitacora';
+    const querry = 'SELECT id, inspector, DATE_FORMAT(fecha, "%Y/%m/%d") as fecha, hora, sector, checklist, observaciones, estado, seguimientoreq FROM bitacora';
     bd.query(querry, (error, resultados) => {
         if (error) {
             console.log('Error al obtener los registros de la bitacora: ' + error);
