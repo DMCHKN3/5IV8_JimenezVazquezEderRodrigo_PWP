@@ -53,9 +53,9 @@ app.get('/', (req, res) => {
 //ruta para crear un registro en la bitacora
 
 app.post('/bitacora', (req, res) => {
-    const { fecha, sector, checklist, estado, observaciones, seguimientoreq, inspector } = req.body;
-    const querry = `INSERT INTO bitacora (fecha, sector, checklist, estado, observaciones, seguimientoreq, inspector) 
-        VALUES ('${fecha}', '${sector}', '${checklist}', '${estado}', '${observaciones}', '${seguimientoreq}', '${inspector}');`;
+    const { fecha, hora, sector, checklist, estado, observaciones, seguimientoreq, inspector } = req.body;
+    const querry = `INSERT INTO bitacora (fecha, hora, sector, checklist, estado, observaciones, seguimientoreq, inspector) 
+        VALUES ('${fecha}', '${hora}', '${sector}', '${checklist}', '${estado}', '${observaciones}', '${seguimientoreq}', '${inspector}');`;
     bd.query(querry, (error, resultados) => {
         if (error) {
             console.log('Error al crear el registro de la bitacora: ' + error);
@@ -96,8 +96,8 @@ app.get('/bitacora/editar/:id', (req, res) => {
 
 app.post('/bitacora/update/:id', (req, res) => {
     const id = req.params.id;
-    const { fecha, sector, checklist, estado, observaciones, seguimientoreq, inspector } = req.body;
-    const querry = `UPDATE bitacora SET fecha='${fecha}', sector='${sector}', checklist='${checklist}', estado='${estado}', 
+    const { fecha, hora, sector, checklist, estado, observaciones, seguimientoreq, inspector } = req.body;
+    const querry = `UPDATE bitacora SET fecha='${fecha}', hora='${hora}', sector='${sector}', checklist='${checklist}', estado='${estado}', 
         observaciones='${observaciones}', seguimientoreq='${seguimientoreq}', inspector='${inspector}' WHERE id=${id};`;
     bd.query(querry, (error, resultados) => {
         if (error) {

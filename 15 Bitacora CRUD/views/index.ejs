@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-main">
+        <h1>Bitacora de Inspecciones</h1>
+        <form action="/bitacora" method="POST">
+            <label for="inspector">Nombre del inspector en turno: </label>
+            <input type="text" id="inspector" name="inspector" required>
+            <label for="fecha">Fecha de revision: </label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="hora">Hora de revision: </label>
+            <input type="time" id="hora" name="hora" required>
+            <label for="sector">Sector de revision: </label>
+            <input type="text" id="sector" name="sector" required>
+            <label for="checklist">Punto de control/ Elemento revisado: </label>
+            <input type="text" id="checklist" name="checklist" required>
+            <label for="observaciones">Observaciones: </label>
+            <input type="text" id="observaciones" name="observaciones" required>
+            <label for="estado">Estado de la revision:</label>
+            <input type="radio" id="estadot" name="estado" value="true" required> Ok
+            <input type="radio" id="estadof" name="estado" value="false" required> Fallo
+            <label for="seguimiento">Seguimiento requerido?: </label>
+            <input type="radio" id="seguimientot" name="seguimiento" value="true" required> Sí
+            <input type="radio" id="seguimientof" name="seguimiento" value="false" required> No
+            <button type="submit">Registrar Actividad</button>
+        </form>
+
+        <ul>
+            <% bitacora.forEach(function(actividad){ %>
+                <li><strong>
+                        <%= actividad.checklist %>
+                    </strong>
+                    (Inspector en turno: <%= actividad.inspector %>, Fecha: <%= actividad.fecha %>,
+                    Hora de revision: <%= actividad.hora %>,
+                    Sector: <%= actividad.sector %>, Observaciones: <%= actividad.observaciones %>, Estado:
+                    <%= actividad.estado ? 'Ok' : 'Fallo' %>, Seguimiento requerido:
+                    <%= actividad.seguimientoreq ? 'Sí' : 'No' %>)
+                            <a href="/actividades/edit/<%= actividad.id %>">Editar</a>
+                            <a href="/actividades/delete/<%= actividad.id %>">Eliminar</a>
+                </li>
+                <% }); %>
+        </ul>
+    </div>
+    <div class="container-footer">
+        <footer>
+            <a href="../../index.html">Regresar al index principal</a>
+        </footer>
+    </div>
+</body>
+
+</html>
