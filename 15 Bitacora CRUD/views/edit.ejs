@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-main">
+        <h1>Editar Registro</h1>
+        <form action="/bitacora/update/<%= registro.id %>" method="POST">
+            <label for="inspector">Nombre del inspector en turno: </label>
+            <input type="text" id="inspector" name="inspector" value="<%= registro.inspector %>" required>
+            <label for="fecha">Fecha de revision: </label>
+            <input type="date" id="fecha" name="fecha" value="<%= registro.fecha %>" required>
+            <label for="hora">Hora de revision: </label>
+            <input type="time" id="hora" name="hora" value="<%= registro.hora %>" required>
+            <label for="sector">Sector de revision: </label>
+            <input type="text" id="sector" name="sector" value="<%= registro.sector %>" required>
+            <label for="checklist">Punto de control/ Elemento revisado: </label>
+            <input type="text" id="checklist" name="checklist" value="<%= registro.checklist %>" required>
+            <label for="observaciones">Observaciones: </label>
+            <input type="text" id="observaciones" name="observaciones" value="<%= registro.observaciones %>" required>
+            <label for="estado">Estado de la revision:</label>
+            <input type="radio" id="estadot" name="estado" value="true" required> Ok
+            <input type="radio" id="estadof" name="estado" value="false" required> Fallo
+            <label for="seguimiento">Seguimiento requerido?: </label>
+            <input type="radio" id="seguimientot" name="seguimiento" value="true" required> Sí
+            <input type="radio" id="seguimientof" name="seguimiento" value="false" required> No
+            <button type="submit">Registrar Actividad</button>
+        </form>
+    </div>
+    <div class="container-footer">
+        <footer>
+            <a href="./index.ejs">Regresar al index</a>
+        </footer>
+    </div>
+</body>
+</html>
