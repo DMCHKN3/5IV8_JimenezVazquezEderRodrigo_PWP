@@ -81,7 +81,7 @@ app.post('/bitacora/eliminar/:id', (req, res) => {
 });
 
 //ruta para buscar y actualizar un registro de la bitacora
-app.get('/bitacora/editar/:id', (req, res) => {
+app.get('/bitacora/edit/:id', (req, res) => {
     const id = req.params.id;
     const querry = `SELECT * FROM bitacora WHERE id = ${id};`;
     bd.query(querry, (error, resultados) => {

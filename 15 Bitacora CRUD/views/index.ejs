@@ -37,13 +37,13 @@
                 <li><strong>
                         <%= actividad.checklist %>
                     </strong>
-                    (Inspector en turno: <%= actividad.inspector %>, Fecha: <%= actividad.fecha %>,
+                    (Inspector en turno: <%= actividad.inspector %>, Fecha: <%= new Date(actividad.fecha).toISOString().split('T')[0] %>,
                     Hora de revision: <%= actividad.hora %>,
                     Sector: <%= actividad.sector %>, Observaciones: <%= actividad.observaciones %>, Estado:
                     <%= actividad.estado ? 'Ok' : 'Fallo' %>, Seguimiento requerido:
                     <%= actividad.seguimientoreq ? 'Sí' : 'No' %>)
-                            <a href="/actividades/edit/<%= actividad.id %>">Editar</a>
-                            <a href="/actividades/delete/<%= actividad.id %>">Eliminar</a>
+                            <a href="/bitacora/edit/<%= actividad.id %>">Editar</a>
+                            <a href="/bitacora/delete/<%= actividad.id %>">Eliminar</a>
                 </li>
                 <% }); %>
         </ul>
