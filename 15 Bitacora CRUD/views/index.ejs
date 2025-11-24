@@ -13,7 +13,7 @@
         <h1>Bitacora de Inspecciones</h1>
         <form action="/bitacora" method="POST">
             <label for="inspector">Nombre del inspector en turno: </label>
-            <input type="text" id="inspector" name="inspector" required onkeypress="return verificar(event)">
+            <input type="text" id="inspector" name="inspector" required onkeypress="return soloLetras(event)">
             <label for="fecha">Fecha de revision: </label>
             <input type="date" id="fecha" name="fecha" required>
             <label for="hora">Hora de revision: </label>

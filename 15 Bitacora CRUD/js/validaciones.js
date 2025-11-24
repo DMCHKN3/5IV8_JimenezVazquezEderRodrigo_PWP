@@ -6,6 +6,14 @@ function verificar(e){
     return patron.test(codigo);
 }
 
+function soloLetras(e) {
+    var teclado = (document.all) ? e.keyCode : e.which;
+    if (teclado == 8) return true;
+    var patron = /[A-Za-z]/;
+    var codigo = String.fromCharCode(teclado);
+    return patron.test(codigo);
+}
+
 function validarFormulario(){
     var fecha = document.getElementById("fecha").value;
     var hora = document.getElementById("hora").value;
