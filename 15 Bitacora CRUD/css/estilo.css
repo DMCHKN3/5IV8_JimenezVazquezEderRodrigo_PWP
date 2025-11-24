@@ -42,6 +42,15 @@ p, a, td, th{
     font-size: 20px;
 }
 
+/* Contenedor en columnas */
+.contenedores {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
 /* Formulario */
 form {
     background-color: #F2A5C0;
@@ -49,9 +58,9 @@ form {
     border-radius: 15px;
     margin-bottom: 2rem;
     border: 2px solid black;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    flex: 1;
+    min-width: 400px;
+    max-width: 500px;
     text-align: left;
 }
 
@@ -130,8 +139,10 @@ ul {
     padding: 25px;
     border-radius: 15px;
     border: 2px solid black;
-    max-width: 800px;
-    margin: 0 auto;
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+    margin: 0;
     list-style: none;
 }
 
@@ -303,8 +314,15 @@ hr {
         padding: 1.5rem;
     }
     
+    .contenedores {
+        flex-direction: column;
+        align-items: center;
+    }
+    
     form, ul {
         padding: 1.5rem;
+        min-width: auto;
+        width: 100%;
     }
     
     ul li {
