@@ -67,7 +67,7 @@ app.post('/bitacora', (req, res) => {
 });
 
 //ruta para eliminar un registro de la bitacora
-app.post('/bitacora/eliminar/:id', (req, res) => {
+app.get('/bitacora/delete/:id', (req, res) => {
     const id = req.params.id;
     const querry = `DELETE FROM bitacora WHERE id = ${id};`;
     bd.query(querry, (error, resultados) => {
