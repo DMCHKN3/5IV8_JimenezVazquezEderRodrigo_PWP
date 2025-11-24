@@ -9,7 +9,7 @@
 <body>
     <div class="container-main">
         <h1>Editar Registro</h1>
-        <form action="/bitacora/update/<%= registro.id %>" method="POST">
+        <form action="/bitacora/update/<%= registro.id %>" method="POST" onsubmit="return validarFormulario()">
             <label for="inspector">Nombre del inspector en turno: </label>
             <input type="text" id="inspector" name="inspector" value="<%= registro.inspector %>" required onkeypress="return soloLetras(event)">
             <label for="fecha">Fecha de revision: </label>

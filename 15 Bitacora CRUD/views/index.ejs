@@ -11,7 +11,7 @@
 <body>
     <div class="container-main">
         <h1>Bitacora de Inspecciones</h1>
-        <form action="/bitacora" method="POST">
+        <form action="/bitacora" method="POST" onsubmit="return validarFormulario()">
             <label for="inspector">Nombre del inspector en turno: </label>
             <input type="text" id="inspector" name="inspector" required onkeypress="return soloLetras(event)">
             <label for="fecha">Fecha de revision: </label>

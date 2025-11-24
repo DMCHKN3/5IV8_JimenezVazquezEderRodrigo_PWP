@@ -23,8 +23,6 @@ function validarFormulario(){
     var observaciones = document.getElementById("observaciones").value;
     var seguimientoreq = document.getElementById("seguimientoreq").value;
     var inspector = document.getElementById("inspector").value;
-    var hoy = new Date();
-    console.log(fecha); 
 
     if (fecha === "" || hora === "" || sector === "" || checklist === "" || estado === "" || observaciones === "" || seguimientoreq === "" || inspector === "") {
         alert("Por favor, complete todos los campos del formulario.");
@@ -46,8 +44,10 @@ function validarFormulario(){
         return false;
     }
 
-    if (fecha <= "2015-01-01" || fecha >= hoy.toISOString().split("T")[0]) {
-        alert("Por favor, ingrese una fecha válida entre el 2015-01-01 y el día de hoy." + "(" + hoy.toISOString().split("T")[0] + ")");
+    var añoFecha = new Date(fecha).getFullYear();
+    
+    if (añoFecha < 2000 || añoFecha > 2100) {
+        alert("Por favor, ingrese una fecha válida entre el año 2000 y 2100.");
         return false;
     }
 
