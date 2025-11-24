@@ -24,6 +24,7 @@ function validarFormulario(){
     var seguimientoreq = document.getElementById("seguimientoreq").value;
     var inspector = document.getElementById("inspector").value;
     var hoy = new Date();
+    console.log(fecha); 
 
     if (fecha === "" || hora === "" || sector === "" || checklist === "" || estado === "" || observaciones === "" || seguimientoreq === "" || inspector === "") {
         alert("Por favor, complete todos los campos del formulario.");
@@ -50,5 +51,6 @@ function validarFormulario(){
         return false;
     }
 
+    
     return true;
 }

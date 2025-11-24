@@ -26,12 +26,16 @@
             <input type="text" id="observaciones" name="observaciones" required onkeypress="return verificar(event)">
             <br>
             <label for="estado">Estado de la revision:</label>
-            <input type="radio" id="estadot" name="estado" value="Ok" required> Ok
-            <input type="radio" id="estadof" name="estado" value="Fallo" required> Fallo
+            <select name="estado" id="estado">
+                <option value="Ok">Ok</option>
+                <option value="Fallo">Fallo</option>
+            </select>
             <br>
-            <label for="seguimiento">Seguimiento requerido?: </label>
-            <input type="radio" id="seguimientot" name="seguimientoreq" value="Si" required> Sí
-            <input type="radio" id="seguimientof" name="seguimientoreq" value="No" required> No
+            <label for="seguimientoreq">Seguimiento requerido?: </label>
+            <select name="seguimientoreq" id="seguimientoreq">
+                <option value="Si">Sí</option>
+                <option value="No">No</option>
+            </select>
             <button type="submit">Registrar Actividad</button>
         </form>
 
