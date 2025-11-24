@@ -65,7 +65,9 @@ form label {
 }
 
 form input[type="text"],
-form input[type="number"] {
+form input[type="number"],
+form input[type="date"],
+form input[type="time"] {
     width: 100%;
     padding: 10px;
     border: 2px solid black;
@@ -77,9 +79,30 @@ form input[type="number"] {
 }
 
 form input[type="text"]:focus,
-form input[type="number"]:focus {
+form input[type="number"]:focus,
+form input[type="date"]:focus,
+form input[type="time"]:focus {
     outline: none;
     border-color: #B5163B;
+}
+
+/* Estilos para radio buttons */
+form input[type="radio"] {
+    margin: 0 8px 0 15px;
+    cursor: pointer;
+    accent-color: #B5163B;
+}
+
+form label[for="estado"],
+form label[for="seguimiento"] {
+    margin-top: 10px;
+}
+
+/* Contenedor inline para radio buttons */
+form input[type="radio"] + label {
+    display: inline;
+    margin-right: 15px;
+    font-weight: normal;
 }
 
 form button[type="submit"] {
