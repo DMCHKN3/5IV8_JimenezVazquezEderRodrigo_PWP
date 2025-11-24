@@ -1,0 +1,327 @@
+html,
+body {
+    background-color: #E14B72;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+* {
+    color: black;
+    text-align: center;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: "Lexend", sans-serif;
+    font-size: 35px;
+    background-color: #F2A5C0;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border: 2px solid black;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2{
+    font-family: "Outfit", sans-serif;
+    font-size: 25px;
+}
+
+h3{
+    font-family: "Funnel Display", sans-serif;
+    font-size: 22px;
+}
+
+p, a, td, th{
+    font-family: "Zain", sans-serif;
+    font-size: 20px;
+}
+
+/* Formulario */
+form {
+    background-color: #F2A5C0;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border: 2px solid black;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+form label {
+    font-weight: bold;
+    color: black;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    background: white;
+    font-family: "Zain", sans-serif;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+    outline: none;
+    border-color: #B5163B;
+}
+
+form button[type="submit"] {
+    background-color: #B5163B;
+    color: white;
+    padding: 12px 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Zain", sans-serif;
+    display: block;
+    margin: 0 auto;
+}
+
+form button[type="submit"]:hover {
+    background-color: #E14B72;
+    color: white;
+}
+
+/* Lista de estudiantes */
+ul {
+    background-color: #F2A5C0;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid black;
+    max-width: 800px;
+    margin: 0 auto;
+    list-style: none;
+}
+
+ul li {
+    background: white;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-size: 20px;
+    text-align: left;
+}
+
+ul li:hover {
+    background: #fdf2f6;
+}
+
+ul li strong {
+    color: #B5163B;
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Enlaces de acción en la lista */
+ul li a {
+    background-color: #B5163B;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+ul li a:hover {
+    background-color: #E14B72;
+    color: white;
+}
+
+ul li a:first-of-type {
+    background-color: #28a745;
+}
+
+ul li a:first-of-type:hover {
+    background-color: #20c997;
+}
+
+ul li a:last-of-type {
+    background-color: #dc3545;
+}
+
+ul li a:last-of-type:hover {
+    background-color: #c82333;
+}
+
+.container-header {
+    align-items: center;
+    background-color: #F2A5C0;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.container-imgs{
+    position: relative;
+    width: 480px;
+    height: 450px;
+}
+
+.img-base, .img-hover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.img-hover{
+    opacity: 0;
+}
+
+.container-imgs:hover .img-base{
+    opacity: 0;
+}
+
+.container-imgs:hover .img-hover{
+    opacity: 1;
+}
+
+.container-texto {
+    background-color: #F2A5C0;
+    font-size: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+
+
+.container-table {
+    align-items: center;
+    padding: 10px;
+    width: 35%;
+}
+
+th,
+td {
+    border: 3px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    background-color: #F2A5C0;
+}
+
+table {
+    margin: auto;
+}
+
+hr {
+    border: 2px solid #F2A5C0;
+    border-radius: 5px;
+}
+
+/* Botón para volver al inicio */
+.btn-volver {
+    display: inline-block;
+    background-color: #F2A5C0;
+    color: black;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Zain", sans-serif;
+}
+
+.btn-volver:hover {
+    background-color: #B5163B;
+    color: white;
+}
+
+/* Contenedor centrado para el botón */
+.center-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+    
+    form, ul {
+        padding: 1.5rem;
+    }
+    
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    ul li a {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    form input[type="text"],
+    form input[type="number"] {
+        font-size: 16px;
+    }
+}
+
+/* Estilos para el footer */
+.container-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+.container-footer footer a {
+    background-color: #F2A5C0;
+    color: black;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Zain", sans-serif;
+    display: inline-block;
+}
+
+.container-footer footer a:hover {
+    background-color: #B5163B;
+    color: white;
+}
