@@ -35,6 +35,9 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/css'));
 
+//configurar las validaciones
+app.use(express.static(__dirname + '/js'));
+
 //creacion del crud
 
 //ruta get para mostrar el formulario y la lista de la bitacora

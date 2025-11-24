@@ -11,17 +11,17 @@
         <h1>Editar Registro</h1>
         <form action="/bitacora/update/<%= registro.id %>" method="POST">
             <label for="inspector">Nombre del inspector en turno: </label>
-            <input type="text" id="inspector" name="inspector" value="<%= registro.inspector %>" required>
+            <input type="text" id="inspector" name="inspector" value="<%= registro.inspector %>" required onkeypress="return verificar(event)">
             <label for="fecha">Fecha de revision: </label>
             <input type="date" id="fecha" name="fecha" value="<%= registro.fecha %>" required>
             <label for="hora">Hora de revision: </label>
             <input type="time" id="hora" name="hora" value="<%= registro.hora %>" required>
             <label for="sector">Sector de revision: </label>
-            <input type="text" id="sector" name="sector" value="<%= registro.sector %>" required>
+            <input type="text" id="sector" name="sector" value="<%= registro.sector %>" required onkeypress="return verificar(event)">
             <label for="checklist">Punto de control/ Elemento revisado: </label>
-            <input type="text" id="checklist" name="checklist" value="<%= registro.checklist %>" required>
+            <input type="text" id="checklist" name="checklist" value="<%= registro.checklist %>" required onkeypress="return verificar(event)">
             <label for="observaciones">Observaciones: </label>
-            <input type="text" id="observaciones" name="observaciones" value="<%= registro.observaciones %>" required>
+            <input type="text" id="observaciones" name="observaciones" value="<%= registro.observaciones %>" required onkeypress="return verificar(event)">
             <br>
             <label for="estado">Estado de la revision:</label>
             <input type="radio" id="estadot" name="estado" value="Ok" required> Ok
@@ -38,5 +38,6 @@
             <a href="/">Regresar al index</a>
         </footer>
     </div>
+    <script src="/validaciones.js"></script>
 </body>
 </html>

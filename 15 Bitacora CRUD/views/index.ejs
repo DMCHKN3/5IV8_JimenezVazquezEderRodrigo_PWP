@@ -13,17 +13,17 @@
         <h1>Bitacora de Inspecciones</h1>
         <form action="/bitacora" method="POST">
             <label for="inspector">Nombre del inspector en turno: </label>
-            <input type="text" id="inspector" name="inspector" required>
+            <input type="text" id="inspector" name="inspector" required onkeypress="return verificar(event)">
             <label for="fecha">Fecha de revision: </label>
             <input type="date" id="fecha" name="fecha" required>
             <label for="hora">Hora de revision: </label>
             <input type="time" id="hora" name="hora" required>
             <label for="sector">Sector de revision: </label>
-            <input type="text" id="sector" name="sector" required>
+            <input type="text" id="sector" name="sector" required onkeypress="return verificar(event)">
             <label for="checklist">Punto de control/ Elemento revisado: </label>
-            <input type="text" id="checklist" name="checklist" required>
+            <input type="text" id="checklist" name="checklist" required onkeypress="return verificar(event)">
             <label for="observaciones">Observaciones: </label>
-            <input type="text" id="observaciones" name="observaciones" required>
+            <input type="text" id="observaciones" name="observaciones" required onkeypress="return verificar(event)">
             <br>
             <label for="estado">Estado de la revision:</label>
             <input type="radio" id="estadot" name="estado" value="Ok" required> Ok
@@ -54,6 +54,7 @@
                 <% }); %>
         </ul>
     </div>
+    <script src="/validaciones.js"></script>
 </body>
 
 </html>
