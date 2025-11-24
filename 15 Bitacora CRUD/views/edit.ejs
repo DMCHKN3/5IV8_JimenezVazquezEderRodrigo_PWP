@@ -22,11 +22,11 @@
             <label for="observaciones">Observaciones: </label>
             <input type="text" id="observaciones" name="observaciones" value="<%= registro.observaciones %>" required>
             <label for="estado">Estado de la revision:</label>
-            <input type="radio" id="estadot" name="estado" value="true" required> Ok
-            <input type="radio" id="estadof" name="estado" value="false" required> Fallo
+            <input type="radio" id="estadot" name="estado" value="Ok" required> Ok
+            <input type="radio" id="estadof" name="estado" value="Fallo" required> Fallo
             <label for="seguimiento">Seguimiento requerido?: </label>
-            <input type="radio" id="seguimientot" name="seguimiento" value="true" required> Sí
-            <input type="radio" id="seguimientof" name="seguimiento" value="false" required> No
+            <input type="radio" id="seguimientot" name="seguimientoreq" value="Si" required> Sí
+            <input type="radio" id="seguimientof" name="seguimientoreq" value="No" required> No
             <button type="submit">Actualizar Datos</button>
         </form>
     </div>
