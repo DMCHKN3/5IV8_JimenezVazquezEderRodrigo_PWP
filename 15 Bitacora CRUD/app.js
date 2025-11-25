@@ -72,13 +72,32 @@ app.post('/bitacora', (req, res) => {
 //ruta para eliminar un registro de la bitacora
 app.get('/bitacora/delete/:id', (req, res) => {
     const id = req.params.id;
-    const querry = `DELETE FROM bitacora WHERE id = ${id};`;
-    bd.query(querry, (error, resultados) => {
+    
+    // Primero verificar si el registro existe
+    const querryVerificar = `SELECT * FROM bitacora WHERE id = ${id};`;
+    bd.query(querryVerificar, (error, resultados) => {
         if (error) {
-            console.log('Error al eliminar el registro de la bitacora: ' + error);
-            res.status(500).send('Error al eliminar el registro de la bitacora');
+            console.log('Error al verificar el registro de la bitacora: ' + error);
+            res.status(500).send('Error al verificar el registro de la bitacora');
+        } else if (resultados.length === 0) {
+            // Si no existe el registro, enviar un script de alerta y redirección
+            res.send(`
+                <script>
+                    alert('El registro con ID ${id} no existe en la base de datos.');
+                    window.location.href = '/';
+                </script>
+            `);
         } else {
-            res.redirect('/');
+            // Si existe, proceder con la eliminación
+            const querry = `DELETE FROM bitacora WHERE id = ${id};`;
+            bd.query(querry, (error, resultados) => {
+                if (error) {
+                    console.log('Error al eliminar el registro de la bitacora: ' + error);
+                    res.status(500).send('Error al eliminar el registro de la bitacora');
+                } else {
+                    res.redirect('/');
+                }
+            });
         }
     });
 });
@@ -91,6 +110,14 @@ app.get('/bitacora/edit/:id', (req, res) => {
         if (error) {
             console.log('Error al obtener el registro de la bitacora: ' + error);
             res.status(500).send('Error al obtener el registro de la bitacora');
+        } else if (resultados.length === 0) {
+            // Si no existe el registro, enviar un script de alerta y redirección
+            res.send(`
+                <script>
+                    alert('El registro con ID ${id} no existe en la base de datos.');
+                    window.location.href = '/';
+                </script>
+            `);
         } else {
             res.render('edit', { registro: resultados[0] });
         }
@@ -100,14 +127,33 @@ app.get('/bitacora/edit/:id', (req, res) => {
 app.post('/bitacora/update/:id', (req, res) => {
     const id = req.params.id;
     const { fecha, hora, sector, checklist, estado, observaciones, seguimientoreq, inspector } = req.body;
-    const querry = `UPDATE bitacora SET fecha='${fecha}', hora='${hora}', sector='${sector}', checklist='${checklist}', estado='${estado}', 
-        observaciones='${observaciones}', seguimientoreq='${seguimientoreq}', inspector='${inspector}' WHERE id=${id};`;
-    bd.query(querry, (error, resultados) => {
+    
+    // Primero verificar si el registro existe
+    const querryVerificar = `SELECT * FROM bitacora WHERE id = ${id};`;
+    bd.query(querryVerificar, (error, resultados) => {
         if (error) {
-            console.log('Error al actualizar el registro de la bitacora: ' + error);
-            res.status(500).send('Error al actualizar el registro de la bitacora');
+            console.log('Error al verificar el registro de la bitacora: ' + error);
+            res.status(500).send('Error al verificar el registro de la bitacora');
+        } else if (resultados.length === 0) {
+            // Si no existe el registro, enviar un script de alerta y redirección
+            res.send(`
+                <script>
+                    alert('El registro con ID ${id} no existe en la base de datos. No se puede actualizar.');
+                    window.location.href = '/';
+                </script>
+            `);
         } else {
-            res.redirect('/');
+            // Si existe, proceder con la actualización
+            const querry = `UPDATE bitacora SET fecha='${fecha}', hora='${hora}', sector='${sector}', checklist='${checklist}', estado='${estado}', 
+                observaciones='${observaciones}', seguimientoreq='${seguimientoreq}', inspector='${inspector}' WHERE id=${id};`;
+            bd.query(querry, (error, resultados) => {
+                if (error) {
+                    console.log('Error al actualizar el registro de la bitacora: ' + error);
+                    res.status(500).send('Error al actualizar el registro de la bitacora');
+                } else {
+                    res.redirect('/');
+                }
+            });
         }
     });
 });

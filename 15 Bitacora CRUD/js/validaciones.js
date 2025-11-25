@@ -107,3 +107,62 @@ function validarEliminacion(){
     var confirmacion = confirm("¿Está seguro de que desea eliminar este registro?");
     return confirmacion;
 }
+
+// Función para detectar cambios en la URL y mostrar alerta
+function validarCambioURL() {
+    var urlActual = window.location.href;
+    var urlPatrones = [
+        /\/bitacora\/edit\/\d+$/,  // Página de edición
+        /\/bitacora\/delete\/\d+$/, // Página de eliminación
+        /\/$/ // Página principal (creación)
+    ];
+
+    // Verificar si estamos en alguna de las páginas críticas
+    var enPaginaCritica = urlPatrones.some(function(patron) {
+        return patron.test(urlActual);
+    });
+
+    if (enPaginaCritica) {
+        // Detectar cambios en la URL usando el evento beforeunload
+        window.addEventListener('beforeunload', function(e) {
+            // Solo mostrar alerta si hay un formulario en la página
+            var formulario = document.querySelector('form');
+            if (formulario) {
+                // Verificar si el formulario tiene datos sin guardar
+                var inputs = formulario.querySelectorAll('input, textarea, select');
+                var hayDatos = false;
+                
+                inputs.forEach(function(input) {
+                    if (input.value !== '' && input.defaultValue !== input.value) {
+                        hayDatos = true;
+                    }
+                });
+
+                if (hayDatos) {
+                    var mensaje = 'Tiene cambios sin guardar. ¿Está seguro de que desea salir?';
+                    e.preventDefault();
+                    e.returnValue = mensaje;
+                    return mensaje;
+                }
+            }
+        });
+
+        // Detectar cambios en el historial (botón atrás/adelante)
+        window.addEventListener('popstate', function(e) {
+            var confirmacion = confirm('¿Está seguro de que desea abandonar esta página? Los cambios no guardados se perderán.');
+            if (!confirmacion) {
+                window.history.pushState(null, null, urlActual);
+            }
+        });
+
+        // Agregar estado inicial al historial
+        window.history.pushState(null, null, urlActual);
+    }
+}
+
+// Ejecutar la validación cuando se carga la página
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', validarCambioURL);
+} else {
+    validarCambioURL();
+}
