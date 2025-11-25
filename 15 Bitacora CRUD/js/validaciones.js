@@ -6,6 +6,12 @@ function verificar(e){
     return patron.test(codigo);
 }
 
+function validarTextoSinEmojis(texto) {
+    // Expresión regular que detecta emojis
+    var patronEmojis = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1F004}\u{1F0CF}\u{1F170}-\u{1F251}]/gu;
+    return !patronEmojis.test(texto);
+}
+
 function soloLetras(e) {
     var teclado = (document.all) ? e.keyCode : e.which;
     if (teclado == 8) return true;
@@ -41,6 +47,27 @@ function validarFormulario(){
 
     if (sector.length > 50) {
         alert("El nombre del sector no puede exceder los 50 caracteres.");
+        return false;
+    }
+
+    // Validar que no contengan emojis
+    if (!validarTextoSinEmojis(inspector)) {
+        alert("El nombre del inspector no puede contener emojis.");
+        return false;
+    }
+
+    if (!validarTextoSinEmojis(sector)) {
+        alert("El sector no puede contener emojis.");
+        return false;
+    }
+
+    if (!validarTextoSinEmojis(checklist)) {
+        alert("El checklist no puede contener emojis.");
+        return false;
+    }
+
+    if (!validarTextoSinEmojis(observaciones)) {
+        alert("Las observaciones no pueden contener emojis.");
         return false;
     }
 
