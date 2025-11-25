@@ -59,7 +59,7 @@
                                                     <br>
                                                     <hr>
                                                     <a href="/bitacora/edit/<%= actividad.id %>">Editar</a>
-                                                    <a href="/bitacora/delete/<%= actividad.id %>">Eliminar</a>
+                                                    <a href="/bitacora/delete/<%= actividad.id %>" onclick="return validarEliminacion()">Eliminar</a>
                     </li>
                     <% }); %>
                 </ul>

@@ -15,7 +15,7 @@ function validarTextoSinEmojis(texto) {
 function soloLetras(e) {
     var teclado = (document.all) ? e.keyCode : e.which;
     if (teclado == 8) return true;
-    var patron = /[A-Za-z]/;
+    var patron = /[A-Za-z ]/;
     var codigo = String.fromCharCode(teclado);
     return patron.test(codigo);
 }
@@ -35,6 +35,27 @@ function validarFormulario(){
         return false;
     }
 
+    // Validar que no sean solo espacios en blanco
+    if (inspector.trim() === "") {
+        alert("El nombre del inspector no puede estar vacío o contener solo espacios.");
+        return false;
+    }
+
+    if (sector.trim() === "") {
+        alert("El sector no puede estar vacío o contener solo espacios.");
+        return false;
+    }
+
+    if (checklist.trim() === "") {
+        alert("El checklist no puede estar vacío o contener solo espacios.");
+        return false;
+    }
+
+    if (observaciones.trim() === "") {
+        alert("Las observaciones no pueden estar vacías o contener solo espacios.");
+        return false;
+    }
+
     if (observaciones.length > 300) {
         alert("El campo de observaciones no puede exceder los 300 caracteres.");
         return false;
@@ -51,33 +72,38 @@ function validarFormulario(){
     }
 
     // Validar que no contengan emojis
-    if (!validarTextoSinEmojis(inspector)) {
+    if (!validarTextoSinEmojis(inspector.trim())) {
         alert("El nombre del inspector no puede contener emojis.");
         return false;
     }
 
-    if (!validarTextoSinEmojis(sector)) {
+    if (!validarTextoSinEmojis(sector.trim())) {
         alert("El sector no puede contener emojis.");
         return false;
     }
 
-    if (!validarTextoSinEmojis(checklist)) {
+    if (!validarTextoSinEmojis(checklist.trim())) {
         alert("El checklist no puede contener emojis.");
         return false;
     }
 
-    if (!validarTextoSinEmojis(observaciones)) {
+    if (!validarTextoSinEmojis(observaciones.trim())) {
         alert("Las observaciones no pueden contener emojis.");
         return false;
     }
 
     var añoFecha = new Date(fecha).getFullYear();
     
-    if (añoFecha < 2000 || añoFecha > 2100) {
-        alert("Por favor, ingrese una fecha válida entre el año 2000 y 2100.");
+    if (añoFecha < 2005 || añoFecha > new Date().getFullYear()) {
+        alert("Por favor, ingrese una fecha válida entre el año 2005 y " + new Date().getFullYear());
         return false;
     }
 
     
     return true;
+}
+
+function validarEliminacion(){
+    var confirmacion = confirm("¿Está seguro de que desea eliminar este registro?");
+    return confirmacion;
 }
