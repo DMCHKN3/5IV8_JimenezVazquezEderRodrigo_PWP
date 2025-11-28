@@ -15,3 +15,17 @@ cursosRouter.get('/', cursosControles.getCursos);
 //necesito busqueda x id
 
 cursosRouter.get('/:id', cursosControles.getCursosById);
+/*
+//post
+cursosRouter.post('/registrar-curso', cursosControles.createCurso);
+
+//put
+cursosRouter.put('/:id', cursosControles.updateCurso);
+
+//delete
+cursosRouter.delete('/:id', cursosControles.deleteCurso);
+
+*/
+//esto en si es una api
+
+module.exports = cursosRouter;
