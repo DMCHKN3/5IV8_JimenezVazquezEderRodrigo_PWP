@@ -34,7 +34,12 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/js'));
 
+//ruta para el juego
+app.get('/juego', (req, res) => {
+    res.render('juego');
+});
 
 //ruta get para mostrar las partidas anteriores guardadas
 app.get('/', (req, res)=>{
@@ -51,14 +56,14 @@ app.get('/', (req, res)=>{
 
 //ruta para guardar una nueva partida
 app.post('/score', (req, res) => {
-    const { player1, player2, winp1, winp2, draw } = req.body;
-    const querry = `INSERT INTO score (player1, player2, winp1, winp2, draw) VALUES ('${player1}', '${player2}', ${winp1}, ${winp2}, ${draw});`;
-    bd.query(querry, (error, resultados) => {
+    const { ganador } = req.body;
+    const querry = `INSERT INTO score (ganador, fecha) VALUES (?, NOW())`;
+    bd.query(querry, [ganador], (error, resultados) => {
         if (error) {
             console.log('Error al guardar el registro: ' + error);
-            res.status(500).send('Error al guardar el registro');
+            res.status(500).json({ success: false, message: 'Error al guardar el registro' });
         } else {
-            res.redirect('/');
+            res.json({ success: true, message: 'Partida guardada correctamente' });
         }
     });
 });
@@ -75,8 +80,4 @@ app.post('/score/delete/:id', (req, res) => {
             res.redirect('/');
         }
     });
-});
-
-app.listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`);
 });

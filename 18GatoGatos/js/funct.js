@@ -84,7 +84,37 @@ function registrarMovimiento(tableroIndex, fila, columna) {
 }
 
 function mostrarCartelGanador(jugador) {
-    alert("¡Felicidades, jugador " + jugador + ", ganaste!");
+    var fichajugador = (jugador === 1) ? "X" : "O";
+    alert("¡Felicidades, jugador " + jugador + " (" + fichajugador + "), ganaste!");
+    guardarPartida("gana jugador " + jugador + " (" + fichajugador + ")");
+}
+
+function mostrarCartelEmpate() {
+    alert("¡La partida terminó en empate!");
+    guardarPartida("hubo un gato");
+}
+
+function guardarPartida(resultado) {
+    fetch('/score', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ganador: resultado
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Partida guardada correctamente');
+        } else {
+            console.error('Error al guardar la partida:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error al guardar la partida:', error);
+    });
 }
 
 function colocarFicha(tableroIndex, fila, columna) {
@@ -116,6 +146,12 @@ function colocarFicha(tableroIndex, fila, columna) {
     var ganadorPartida = checarSiGanoPartida();
     if (ganadorPartida !== 0) {
         mostrarCartelGanador(ganadorPartida);
+        return true;
+    }
+    
+    // Verificar si hay empate (todos los tableros llenos o ganados sin ganador general)
+    if (verificarEmpatePartida()) {
+        mostrarCartelEmpate();
         return true;
     }
     
@@ -213,6 +249,16 @@ function checarSiGanoPartida() {
         [tablerosGanados[3], tablerosGanados[4], tablerosGanados[5]],
         [tablerosGanados[6], tablerosGanados[7], tablerosGanados[8]]
     ]);
+}
+
+function verificarEmpatePartida() {
+    // Verificar si todos los tableros están ganados o llenos
+    for (var i = 0; i < tableros.length; i++) {
+        if (checarSiGanoTablero(tableros[i]) === 0 && !esTableroLleno(tableros[i])) {
+            return false; // Aún hay tableros disponibles
+        }
+    }
+    return true; // Todos los tableros están ganados o llenos
 }
 
 function reiniciarJuego() {
