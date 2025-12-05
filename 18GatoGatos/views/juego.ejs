@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego del gato de gatos</title>
+    <link rel="stylesheet" href="gatos.css">
 </head>
 <body>
     <div class="juego-container">
         <div>
             <h1>Juego del gato de gatos</h1>
-            <div id="iniciarBoton" onclick="reiniciar();">
+            <button id="iniciarBoton" onclick="reiniciarJuegoCompleto();">
                 Reiniciar juego
-            </div>
+            </button>
             <div id="instrucciones">
                 <h2>Instrucciones del juego</h2>
                 <ul id="lista-instrucciones"></ul>
@@ -24,23 +25,142 @@
     </div>
     <div class="tablero-container">
         <div id="casilla1" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-0-celda-0-0" class="celda" onclick="colocarFicha(0, 0, 0)"></div>
+                <div id="tablero-0-celda-0-1" class="celda" onclick="colocarFicha(0, 0, 1)"></div>
+                <div id="tablero-0-celda-0-2" class="celda" onclick="colocarFicha(0, 0, 2)"></div>
+                <div id="tablero-0-celda-1-0" class="celda" onclick="colocarFicha(0, 1, 0)"></div>
+                <div id="tablero-0-celda-1-1" class="celda" onclick="colocarFicha(0, 1, 1)"></div>
+                <div id="tablero-0-celda-1-2" class="celda" onclick="colocarFicha(0, 1, 2)"></div>
+                <div id="tablero-0-celda-2-0" class="celda" onclick="colocarFicha(0, 2, 0)"></div>
+                <div id="tablero-0-celda-2-1" class="celda" onclick="colocarFicha(0, 2, 1)"></div>
+                <div id="tablero-0-celda-2-2" class="celda" onclick="colocarFicha(0, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla2" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-1-celda-0-0" class="celda" onclick="colocarFicha(1, 0, 0)"></div>
+                <div id="tablero-1-celda-0-1" class="celda" onclick="colocarFicha(1, 0, 1)"></div>
+                <div id="tablero-1-celda-0-2" class="celda" onclick="colocarFicha(1, 0, 2)"></div>
+                <div id="tablero-1-celda-1-0" class="celda" onclick="colocarFicha(1, 1, 0)"></div>
+                <div id="tablero-1-celda-1-1" class="celda" onclick="colocarFicha(1, 1, 1)"></div>
+                <div id="tablero-1-celda-1-2" class="celda" onclick="colocarFicha(1, 1, 2)"></div>
+                <div id="tablero-1-celda-2-0" class="celda" onclick="colocarFicha(1, 2, 0)"></div>
+                <div id="tablero-1-celda-2-1" class="celda" onclick="colocarFicha(1, 2, 1)"></div>
+                <div id="tablero-1-celda-2-2" class="celda" onclick="colocarFicha(1, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla3" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-2-celda-0-0" class="celda" onclick="colocarFicha(2, 0, 0)"></div>
+                <div id="tablero-2-celda-0-1" class="celda" onclick="colocarFicha(2, 0, 1)"></div>
+                <div id="tablero-2-celda-0-2" class="celda" onclick="colocarFicha(2, 0, 2)"></div>
+                <div id="tablero-2-celda-1-0" class="celda" onclick="colocarFicha(2, 1, 0)"></div>
+                <div id="tablero-2-celda-1-1" class="celda" onclick="colocarFicha(2, 1, 1)"></div>
+                <div id="tablero-2-celda-1-2" class="celda" onclick="colocarFicha(2, 1, 2)"></div>
+                <div id="tablero-2-celda-2-0" class="celda" onclick="colocarFicha(2, 2, 0)"></div>
+                <div id="tablero-2-celda-2-1" class="celda" onclick="colocarFicha(2, 2, 1)"></div>
+                <div id="tablero-2-celda-2-2" class="celda" onclick="colocarFicha(2, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla4" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-3-celda-0-0" class="celda" onclick="colocarFicha(3, 0, 0)"></div>
+                <div id="tablero-3-celda-0-1" class="celda" onclick="colocarFicha(3, 0, 1)"></div>
+                <div id="tablero-3-celda-0-2" class="celda" onclick="colocarFicha(3, 0, 2)"></div>
+                <div id="tablero-3-celda-1-0" class="celda" onclick="colocarFicha(3, 1, 0)"></div>
+                <div id="tablero-3-celda-1-1" class="celda" onclick="colocarFicha(3, 1, 1)"></div>
+                <div id="tablero-3-celda-1-2" class="celda" onclick="colocarFicha(3, 1, 2)"></div>
+                <div id="tablero-3-celda-2-0" class="celda" onclick="colocarFicha(3, 2, 0)"></div>
+                <div id="tablero-3-celda-2-1" class="celda" onclick="colocarFicha(3, 2, 1)"></div>
+                <div id="tablero-3-celda-2-2" class="celda" onclick="colocarFicha(3, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla5" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-4-celda-0-0" class="celda" onclick="colocarFicha(4, 0, 0)"></div>
+                <div id="tablero-4-celda-0-1" class="celda" onclick="colocarFicha(4, 0, 1)"></div>
+                <div id="tablero-4-celda-0-2" class="celda" onclick="colocarFicha(4, 0, 2)"></div>
+                <div id="tablero-4-celda-1-0" class="celda" onclick="colocarFicha(4, 1, 0)"></div>
+                <div id="tablero-4-celda-1-1" class="celda" onclick="colocarFicha(4, 1, 1)"></div>
+                <div id="tablero-4-celda-1-2" class="celda" onclick="colocarFicha(4, 1, 2)"></div>
+                <div id="tablero-4-celda-2-0" class="celda" onclick="colocarFicha(4, 2, 0)"></div>
+                <div id="tablero-4-celda-2-1" class="celda" onclick="colocarFicha(4, 2, 1)"></div>
+                <div id="tablero-4-celda-2-2" class="celda" onclick="colocarFicha(4, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla6" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-5-celda-0-0" class="celda" onclick="colocarFicha(5, 0, 0)"></div>
+                <div id="tablero-5-celda-0-1" class="celda" onclick="colocarFicha(5, 0, 1)"></div>
+                <div id="tablero-5-celda-0-2" class="celda" onclick="colocarFicha(5, 0, 2)"></div>
+                <div id="tablero-5-celda-1-0" class="celda" onclick="colocarFicha(5, 1, 0)"></div>
+                <div id="tablero-5-celda-1-1" class="celda" onclick="colocarFicha(5, 1, 1)"></div>
+                <div id="tablero-5-celda-1-2" class="celda" onclick="colocarFicha(5, 1, 2)"></div>
+                <div id="tablero-5-celda-2-0" class="celda" onclick="colocarFicha(5, 2, 0)"></div>
+                <div id="tablero-5-celda-2-1" class="celda" onclick="colocarFicha(5, 2, 1)"></div>
+                <div id="tablero-5-celda-2-2" class="celda" onclick="colocarFicha(5, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla7" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-6-celda-0-0" class="celda" onclick="colocarFicha(6, 0, 0)"></div>
+                <div id="tablero-6-celda-0-1" class="celda" onclick="colocarFicha(6, 0, 1)"></div>
+                <div id="tablero-6-celda-0-2" class="celda" onclick="colocarFicha(6, 0, 2)"></div>
+                <div id="tablero-6-celda-1-0" class="celda" onclick="colocarFicha(6, 1, 0)"></div>
+                <div id="tablero-6-celda-1-1" class="celda" onclick="colocarFicha(6, 1, 1)"></div>
+                <div id="tablero-6-celda-1-2" class="celda" onclick="colocarFicha(6, 1, 2)"></div>
+                <div id="tablero-6-celda-2-0" class="celda" onclick="colocarFicha(6, 2, 0)"></div>
+                <div id="tablero-6-celda-2-1" class="celda" onclick="colocarFicha(6, 2, 1)"></div>
+                <div id="tablero-6-celda-2-2" class="celda" onclick="colocarFicha(6, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla8" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-7-celda-0-0" class="celda" onclick="colocarFicha(7, 0, 0)"></div>
+                <div id="tablero-7-celda-0-1" class="celda" onclick="colocarFicha(7, 0, 1)"></div>
+                <div id="tablero-7-celda-0-2" class="celda" onclick="colocarFicha(7, 0, 2)"></div>
+                <div id="tablero-7-celda-1-0" class="celda" onclick="colocarFicha(7, 1, 0)"></div>
+                <div id="tablero-7-celda-1-1" class="celda" onclick="colocarFicha(7, 1, 1)"></div>
+                <div id="tablero-7-celda-1-2" class="celda" onclick="colocarFicha(7, 1, 2)"></div>
+                <div id="tablero-7-celda-2-0" class="celda" onclick="colocarFicha(7, 2, 0)"></div>
+                <div id="tablero-7-celda-2-1" class="celda" onclick="colocarFicha(7, 2, 1)"></div>
+                <div id="tablero-7-celda-2-2" class="celda" onclick="colocarFicha(7, 2, 2)"></div>
+            </div>
         </div>
         <div id="casilla9" class="casilla-container">
+            <div class="tablero-pequeno">
+                <div id="tablero-8-celda-0-0" class="celda" onclick="colocarFicha(8, 0, 0)"></div>
+                <div id="tablero-8-celda-0-1" class="celda" onclick="colocarFicha(8, 0, 1)"></div>
+                <div id="tablero-8-celda-0-2" class="celda" onclick="colocarFicha(8, 0, 2)"></div>
+                <div id="tablero-8-celda-1-0" class="celda" onclick="colocarFicha(8, 1, 0)"></div>
+                <div id="tablero-8-celda-1-1" class="celda" onclick="colocarFicha(8, 1, 1)"></div>
+                <div id="tablero-8-celda-1-2" class="celda" onclick="colocarFicha(8, 1, 2)"></div>
+                <div id="tablero-8-celda-2-0" class="celda" onclick="colocarFicha(8, 2, 0)"></div>
+                <div id="tablero-8-celda-2-1" class="celda" onclick="colocarFicha(8, 2, 1)"></div>
+                <div id="tablero-8-celda-2-2" class="celda" onclick="colocarFicha(8, 2, 2)"></div>
+            </div>
         </div>
     </div>
+
+    <div>
+        <h2>Partidas anteriores</h2>
+        <ul>
+            <% partidasAnteriores.forEach(function(partida) { %>
+                <li><%= partida %>
+                    (Resultado:<%= partida.ganador %> Fecha: <%= partida.fecha %>)
+                <a href="/partida/delete/<%= partida.id %>"> Eliminar registro de partida</a></li>
+            <% }); %>
+        </ul>
+    </div>
+
+    <script src="funct.js"></script>
+    <script>
+        // Inicializar el juego al cargar la página
+        window.onload = function() {
+            iniciarJuego();
+            cargarPartidasAnteriores();
+        };
+    </script>
 </body>
 </html>
