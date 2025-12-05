@@ -87,6 +87,42 @@ function mostrarCartelGanador(jugador) {
     alert("¡Felicidades, jugador " + jugador + ", ganaste!");
 }
 
+function colocarFicha(tableroIndex, fila, columna) {
+    // Validar primero antes de modificar el DOM
+    if (!tableroValido(tableroIndex)) {
+        alert("No puedes jugar en este tablero");
+        return false;
+    }
+    
+    if (tableros[tableroIndex][fila][columna] !== 0) {
+        alert("Esta casilla ya está ocupada");
+        return false;
+    }
+    
+    // Si las validaciones pasan, actualizar el estado y el DOM
+    tableros[tableroIndex][fila][columna] = turno;
+    registrarMovimiento(tableroIndex, fila, columna);
+    
+    const celda = document.getElementById("tablero-" + tableroIndex + "-celda-" + fila + "-" + columna);
+    celda.innerText = (turno === 1) ? "X" : "O";
+    
+    // Verificar si hay un ganador de tablero pequeño
+    var ganadorTablero = checarSiGanoTablero(tableros[tableroIndex]);
+    if (ganadorTablero !== 0) {
+        marcarTableroGanado(tableroIndex, ganadorTablero);
+    }
+    
+    // Verificar si hay un ganador de la partida
+    var ganadorPartida = checarSiGanoPartida();
+    if (ganadorPartida !== 0) {
+        mostrarCartelGanador(ganadorPartida);
+        return true;
+    }
+    
+    cambiarTurno();
+    actualizarIndicadorTablero();
+    return true;
+}
 
 function checarSiGanoTablero(tablero) {
     // Verificar filas y columnas
@@ -109,6 +145,58 @@ function checarSiGanoTablero(tablero) {
     return 0; // No hay ganador
 }
 
+function tableroValido(tableroIndex) {
+    // Un tablero no es válido si ya fue ganado
+    if (checarSiGanoTablero(tableros[tableroIndex]) !== 0) {
+        return false;
+    }
+    
+    // Primer movimiento, cualquier tablero es válido
+    if (movimientos.length === 0) {
+        return true;
+    }
+    
+    var ultimoMovimiento = movimientos[movimientos.length - 1];
+    var tableroDestino = ultimoMovimiento.fila * 3 + ultimoMovimiento.columna;
+    
+    // Si el tablero destino está ganado o lleno, cualquier tablero disponible es válido
+    if (checarSiGanoTablero(tableros[tableroDestino]) !== 0 || esTableroLleno(tableros[tableroDestino])) {
+        return true;
+    }
+    
+    // De lo contrario, solo el tablero destino es válido
+    return tableroIndex === tableroDestino;
+}
+
+function obtenerTableroActivo() {
+    // Retorna -1 si se puede jugar en cualquier tablero, o el índice del tablero obligatorio
+    if (movimientos.length === 0) {
+        return -1; // Primer movimiento, cualquier tablero
+    }
+    
+    var ultimoMovimiento = movimientos[movimientos.length - 1];
+    var tableroDestino = ultimoMovimiento.fila * 3 + ultimoMovimiento.columna;
+    
+    // Si el tablero destino está ganado o lleno, se puede jugar en cualquiera
+    if (checarSiGanoTablero(tableros[tableroDestino]) !== 0 || esTableroLleno(tableros[tableroDestino])) {
+        return -1;
+    }
+    
+    return tableroDestino;
+}
+
+
+function esTableroLleno(tablero) {
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            if (tablero[i][j] === 0) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 function checarSiGanoPartida() {
     var tablerosGanados = [
         0, 0, 0,
@@ -127,34 +215,63 @@ function checarSiGanoPartida() {
     ]);
 }
 
-function colocarFicha(tableroIndex, fila, columna) {
-
-    const x = document.getElementById("tablero-" + tableroIndex + "-celda-" + fila + "-" + columna);
-    x.innerText = (turno === 1) ? "X" : "O";
-    if (tableros[tableroIndex][fila][columna] === 0) {
-        tableros[tableroIndex][fila][columna] = turno;
-        registrarMovimiento(tableroIndex, fila, columna);
-        var ganadorPartida = checarSiGanoPartida();
-        if (ganadorPartida !== 0) {
-            mostrarCartelGanador(ganadorPartida);
-        }
-        cambiarTurno();
-        return true;
-    }
-    return false;
-}
-
 function reiniciarJuego() {
     movimientos = [];
     turno = 1;
-    tableros = [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ];
+    tableros = [];
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            tableros.push([
+                [0, 0, 0],
+                [0, 0, 0],
+                [0, 0, 0]
+            ]);
+        }
+    }
+}
+
+function marcarTableroGanado(tableroIndex, ganador) {
+    // Marcar visualmente el tablero como ganado
+    var tablero = document.getElementById("casilla" + (tableroIndex + 1));
+    if (tablero) {
+        tablero.classList.add("tablero-ganado");
+        tablero.classList.add(ganador === 1 ? "ganado-x" : "ganado-o");
+    }
+}
+
+function actualizarIndicadorTablero() {
+    // Actualizar indicador visual de dónde se debe jugar
+    var tableroActivo = obtenerTableroActivo();
+    
+    // Remover clase activa de todos los tableros
+    for (var i = 0; i < 9; i++) {
+        var tablero = document.getElementById("casilla" + (i + 1));
+        if (tablero) {
+            tablero.classList.remove("tablero-activo");
+        }
+    }
+    
+    // Si hay un tablero específico, marcarlo como activo
+    if (tableroActivo !== -1) {
+        var tablero = document.getElementById("casilla" + (tableroActivo + 1));
+        if (tablero && checarSiGanoTablero(tableros[tableroActivo]) === 0) {
+            tablero.classList.add("tablero-activo");
+        }
+    }
+    
+    // Actualizar texto del turno
+    var flecha = document.getElementById("flecha");
+    if (flecha) {
+        if (tableroActivo === -1) {
+            flecha.textContent = "Jugador " + turno + " - Puedes jugar en cualquier tablero disponible";
+        } else {
+            flecha.textContent = "Jugador " + turno + " - Debes jugar en el tablero " + (tableroActivo + 1);
+        }
+    }
 }
 
 function iniciarJuego() {
     mostrarInstrucciones(instrucciones);
     reiniciarJuego();
+    actualizarIndicadorTablero();
 }
