@@ -7,23 +7,28 @@
     <link rel="stylesheet" href="/gatos.css">
 </head>
 <body>
-    <div class="juego-container">
-        <div>
-            <h1>Juego del gato de gatos</h1>
+    <h1>Ultimate Tic-Tac-Toe</h1>
+    
+    <div class="main-container">
+        <!-- Sidebar con instrucciones -->
+        <div class="sidebar">
+            <div class="info-card">
+                <h2>Instrucciones</h2>
+                <ul id="lista-instrucciones"></ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>Turno Actual</h2>
+                <div id="flecha" class="texto-centrado"></div>
+            </div>
+            
             <button id="iniciarBoton" onclick="reiniciarJuegoCompleto();">
                 Reiniciar juego
             </button>
-            <div id="instrucciones">
-                <h2>Instrucciones del juego</h2>
-                <ul id="lista-instrucciones"></ul>
-            </div>
-            <div id="ultimo-mov">
-                <h2>Último movimiento</h2>
-                <div id="flecha" class="texto-centrado"></div>
-            </div>
         </div>
-    </div>
-    <div class="tablero-container">
+        
+        <!-- Tablero principal -->
+        <div class="tablero-container">
         <div id="casilla1" class="casilla-container">
             <div class="tablero-pequeno">
                 <div id="tablero-0-celda-0-0" class="celda" onclick="colocarFicha(0, 0, 0)"></div>
@@ -141,6 +146,7 @@
                 <div id="tablero-8-celda-2-2" class="celda" onclick="colocarFicha(8, 2, 2)"></div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="partidas-anteriores-container">
