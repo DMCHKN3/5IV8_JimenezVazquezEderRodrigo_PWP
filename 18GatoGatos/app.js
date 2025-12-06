@@ -38,7 +38,15 @@ app.use(express.static(__dirname + '/js'));
 
 //ruta para el juego
 app.get('/juego', (req, res) => {
-    res.render('juego');
+    const querry = 'SELECT * FROM score ORDER BY fecha DESC LIMIT 10';
+    bd.query(querry, (error, resultados) => {
+        if (error) {
+            console.log('Error al obtener los registros: ' + error);
+            res.render('juego', { partidas: [] });
+        } else {
+            res.render('juego', { partidas: resultados });
+        }
+    });
 });
 
 //ruta get para mostrar las partidas anteriores guardadas
@@ -49,7 +57,7 @@ app.get('/', (req, res)=>{
             console.log('Error al obtener los registros: ' + error);
             res.status(500).send('Error al obtener los registros');
         } else {
-            res.render('index', { score: resultados });
+            res.render('juego', { score: resultados });
         }
     });
 });

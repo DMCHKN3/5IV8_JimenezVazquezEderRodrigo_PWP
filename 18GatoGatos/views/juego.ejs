@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego del gato de gatos</title>
-    <link rel="stylesheet" href="gatos.css">
+    <link rel="stylesheet" href="/gatos.css">
 </head>
 <body>
     <div class="juego-container">
@@ -143,14 +143,18 @@
         </div>
     </div>
 
-    <div>
+    <div class="partidas-anteriores-container">
         <h2>Partidas anteriores</h2>
         <ul>
-            <% partidasAnteriores.forEach(function(partida) { %>
-                <li><%= partida %>
-                    (Resultado:<%= partida.ganador %> Fecha: <%= partida.fecha %>)
-                <a href="/partida/delete/<%= partida.id %>"> Eliminar registro de partida</a></li>
-            <% }); %>
+            <% if (score && score.length > 0) { %>
+                <% score.forEach(function(partida) { %>
+                    <li class="partida-item">
+                        <strong><%= partida.ganador %></strong> - <%= new Date(partida.fecha).toLocaleString() %>
+                    </li>
+                <% }); %>
+            <% } else { %>
+                <li class="partida-item">No hay partidas guardadas aún</li>
+            <% } %>
         </ul>
     </div>
 
@@ -159,7 +163,6 @@
         // Inicializar el juego al cargar la página
         window.onload = function() {
             iniciarJuego();
-            cargarPartidasAnteriores();
         };
     </script>
 </body>

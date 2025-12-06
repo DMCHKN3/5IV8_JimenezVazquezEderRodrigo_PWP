@@ -321,3 +321,26 @@ function iniciarJuego() {
     reiniciarJuego();
     actualizarIndicadorTablero();
 }
+
+function reiniciarJuegoCompleto() {
+    // Limpiar todas las celdas
+    for (var i = 0; i < 9; i++) {
+        for (var fila = 0; fila < 3; fila++) {
+            for (var col = 0; col < 3; col++) {
+                var celda = document.getElementById("tablero-" + i + "-celda-" + fila + "-" + col);
+                if (celda) {
+                    celda.innerText = "";
+                }
+            }
+        }
+        // Remover clases de tableros ganados
+        var tablero = document.getElementById("casilla" + (i + 1));
+        if (tablero) {
+            tablero.classList.remove("tablero-ganado", "ganado-x", "ganado-o", "tablero-activo");
+        }
+    }
+    
+    // Reiniciar el juego
+    reiniciarJuego();
+    actualizarIndicadorTablero();
+}

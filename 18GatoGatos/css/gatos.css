@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+/* Contenedor principal del juego */
+.juego-container {
+    max-width: 400px;
+    margin: 0 auto 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de reiniciar */
+#iniciarBoton {
+    width: 100%;
+    padding: 12px 24px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+#iniciarBoton:hover {
+    background: #45a049;
+}
+
+#iniciarBoton:active {
+    transform: scale(0.98);
+}
+
+/* Instrucciones */
+#instrucciones {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#lista-instrucciones {
+    list-style-position: inside;
+    color: #555;
+    line-height: 1.6;
+}
+
+#lista-instrucciones li {
+    margin-bottom: 5px;
+}
+
+/* Último movimiento */
+#ultimo-mov {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#flecha {
+    color: #1976d2;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.texto-centrado {
+    text-align: center;
+}
+
+/* Contenedor del tablero principal (3x3 de tableros) */
+.tablero-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Cada casilla (tablero pequeño) */
+.casilla-container {
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 8px;
+    padding: 8px;
+    transition: all 0.3s;
+}
+
+/* Tablero pequeño (3x3 de celdas) */
+.tablero-pequeno {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+/* Cada celda individual */
+.celda {
+    background: #f9f9f9;
+    border: 2px solid #999;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.celda:hover {
+    background: #e0e0e0;
+}
+
+.celda:active {
+    transform: scale(0.95);
+}
+
+/* Tablero activo (donde se debe jugar) */
+.tablero-activo {
+    border-color: #ffd700;
+    background: #fffacd;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* Tablero ganado */
+.tablero-ganado {
+    position: relative;
+    opacity: 0.7;
+}
+
+.tablero-ganado::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+/* Tablero ganado por X */
+.ganado-x {
+    border-color: #2196F3;
+    background: #e3f2fd;
+}
+
+.ganado-x::before {
+    content: 'X';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    color: #2196F3;
+    opacity: 0.3;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Tablero ganado por O */
+.ganado-o {
+    border-color: #f44336;
+    background: #ffebee;
+}
+
+.ganado-o::before {
+    content: 'O';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    color: #f44336;
+    opacity: 0.3;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Contenedor de partidas anteriores */
+.partidas-anteriores-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.partidas-anteriores-container h2 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.partidas-anteriores-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.partida-item {
+    background: #f5f5f5;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border-left: 4px solid #667eea;
+}
+
+.partida-item strong {
+    color: #667eea;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tablero-container {
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .celda {
+        font-size: 1.5rem;
+    }
+    
+    .ganado-x::before,
+    .ganado-o::before {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .tablero-container {
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .celda {
+        font-size: 1.2rem;
+    }
+    
+    .ganado-x::before,
+    .ganado-o::before {
+        font-size: 3rem;
+    }
+}
