@@ -13,7 +13,11 @@ const actividades = [
     { nombre: "11 API Fetch", link: "./11 API Fetch/api.html", descripcion: "se trabaja con API y Fetch para hacer una pokedex"},
     { nombre: "12 Examen2", link: "./12Examen2/examen.html", descripcion: "Es el uso de la API que escogimos para el examen de 2o parcial"},
     { nombre: "13 Prueba extra", link: "./13 Ejerciciof 2o par/imagen_prueba.html", descripcion: "Prueba extra de JS" },
-    { nombre: "14 CRUD MySQL", link: "./14 CRUDMYSQL/index.ejs", descripcion: "CRUD con Node.js y MySQL" }
+    { nombre: "14 CRUD MySQL", link: "./14 CRUDMYSQL/index.ejs", descripcion: "CRUD con Node.js y MySQL" },
+    { nombre: "15 Bitacora CRUD", link: "./15 Bitacora CRUD/index.html", descripcion: "Tarea sobre hacer una bitacora usando el crud de la practica 14" },
+    { nombre: "16 Crud Separado", link: "./16 Crud Separado/views/bienvenida.html", descripcion: "Se hace un crud separado, uso el html de bienvenida y tmb le pongo imagenes por lo del ejs" },
+    { nombre: "17 API Crud", link: "./17 API Crud/index.html", descripcion: "Lo mismo que en la 16 pero aqui ya hicimos la estructura de una api yay :3 pero creo q no se acabo x lo del paro :c" },
+    { nombre: "18 Gato de gatos 🙀", link: "./18GatoGatos/imagenes.html", descripcion: "Juego del gato hecho de gatos pero puras imagenes cxq lo pidio con una bd entonces no puedo subir el archivo .ejs :c" }
 
 ];
 
